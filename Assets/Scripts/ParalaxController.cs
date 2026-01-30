@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParalaxControler : MonoBehaviour
+public class ParalaxController : MonoBehaviour
 {
     [Header("Objects")]
     public Transform cam;          // Cámara principal
-    public Transform background;
-    public Transform midleground;
-    public Transform foreground;
+    public Transform backGround;
+    public Transform midleGround;
+    public Transform foreGround;
 
-    [Header("Velocidades de Parallax")]
+    [Header("Parallax velocities")]
     [Range(0f, 1f)] public float backSpeed = 0.2f;
     [Range(0f, 1f)] public float midleSpeed = 0.5f;
     [Range(0f, 1f)] public float frontSpeed = 0.8f;
@@ -26,9 +26,9 @@ public class ParalaxControler : MonoBehaviour
     {
         Vector3 delta = cam.position - lastCamPosition;
 
-        background.position += new Vector3(delta.x * backSpeed, delta.y * backSpeed, 0);
-        midleground.position += new Vector3(delta.x * midleSpeed, delta.y * midleSpeed, 0);
-        foreground.position += new Vector3(delta.x * frontSpeed, delta.y * frontSpeed, 0);
+        backGround.position += new Vector3(delta.x * backSpeed, delta.y * backSpeed, 0);
+        midleGround.position += new Vector3(delta.x * midleSpeed, delta.y * midleSpeed, 0);
+        foreGround.position += new Vector3(delta.x * frontSpeed, delta.y * frontSpeed, 0);
 
         lastCamPosition = cam.position;
     }

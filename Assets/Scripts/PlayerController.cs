@@ -8,32 +8,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int speed; //variable para el valor de la velocidad de movimiento
     [SerializeField] int jumpForce; //variable para el valor de la velocidad de salto
     [SerializeField] int hopForce; //variable para el valor de la velocidad de rebote
-    [SerializeField] bool isFloored; //variable para comprobar si toca el suelo
+    [SerializeField] bool isGrounded; //variable para comprobar si toca el suelo
     [SerializeField] bool isDead;
     Rigidbody2D rb;                 //referencia a rigidBody2D
     CapsuleCollider2D capsule;      //Referencia a un collider 2D de capsula
 
-    public float sanityActual;
-    public float sanityMax;
+    public float currentSanity;
+    public float maxSanity;
 
     public GameObject weapon;
     public Transform armPivot;
     private bool isAttacking=false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        speed = 3;                  //le damos valor a la variable velocidad
-        jumpForce = 10;                  //le damos valor a la variable salto
+        speed = 3;                  
+        jumpForce = 10;      
         hopForce = jumpForce / 2;
-        rb = GetComponent<Rigidbody2D>(); //Igualamos rigidbody al Rigidbody de nuestro personaje.
+        rb = GetComponent<Rigidbody2D>();
 
-        capsule = GetComponent<CapsuleCollider2D>();//nuestro collider
-        sanityMax = 100;
-        sanityActual = sanityMax;
+        capsule = GetComponent<CapsuleCollider2D>();
+        maxSanity = 100;
+        currentSanity = maxSanity;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isDead)
@@ -41,11 +39,10 @@ public class PlayerController : MonoBehaviour
             //usando el rigidbody, le damos velocidad en  un vector2 usando el valor que nos devuelve el eje horizontal---
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
 
-            //salto
-            if (Input.GetKeyDown(KeyCode.Space) && isFloored)
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                isFloored = false;
+                isGrounded = false;
             }
 
             //comprueba que nuestra velocidad en x sea mayor de cero, por lo que se mueve a la derecha
@@ -61,12 +58,12 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector2(-1, 1);
             }
 
-            attackControll();
+            AttackControll();
         }
     }
 
 
-    //este método controla colisiones SOLIDAS
+    //este mï¿½todo controla colisiones SOLIDAS
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //comprueba que colisionas contra un objeto que tiene como tag Enemy
@@ -83,12 +80,12 @@ public class PlayerController : MonoBehaviour
 
             //A los 2 segundos reinica la escena
             Invoke("reinicio", 2f);*/
-            //daña al jugador
+            //daï¿½a al jugador
             //si vida es 0 = muerte
         }
     }
 
-    //este método controla colisiones NO SOLIDAS (trigger)
+    //este mï¿½todo controla colisiones NO SOLIDAS (trigger)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //comprueba que tocas un objeto del nombre item
@@ -114,7 +111,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Suelo")
         {
             //Ponemos la variable en true
-            isFloored = true;
+            isGrounded = true;
         }
     }
 
@@ -122,25 +119,25 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Suelo")
         {
-            isFloored = false;
+            isGrounded = false;
         }
     }
 
-    void reinicio()
+    void Reset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void attackControll()
+    void AttackControll()
     {
-        //el jugador ataca cuando pulsa el click izquierdo del ratón
+        //el jugador ataca cuando pulsa el click izquierdo del ratï¿½n
         if(Input.GetMouseButton(0) && !isAttacking)
         {
-            StartCoroutine(playerAttack());
+            StartCoroutine(PlayerAttack());
         }
     }
 
-    IEnumerator playerAttack()
+    IEnumerator PlayerAttack()
     {
         isAttacking = true;
         weapon.SetActive(true);

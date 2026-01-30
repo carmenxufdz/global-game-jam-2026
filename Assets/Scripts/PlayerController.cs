@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     public float sanityActual;
     public float sanityMax;
 
+    public GameObject weapon;
+    public Transform armPivot;
+    private bool isAttacking=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +60,8 @@ public class PlayerController : MonoBehaviour
                 //ponemos nuestra escala en x:-1 e Y:1, dandose la vuelta
                 transform.localScale = new Vector2(-1, 1);
             }
+
+            attackControll();
         }
     }
 
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour
         //comprueba que colisionas contra un objeto que tiene como tag Enemy
         if (collision.gameObject.tag == "Enemy")
         {
+            /*
             //cambio la variable de animacion muerto a true
             isDead = true;
 
@@ -75,7 +82,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(0, 15);
 
             //A los 2 segundos reinica la escena
-            Invoke("reinicio", 2f);
+            Invoke("reinicio", 2f);*/
+            //daña al jugador
+            //si vida es 0 = muerte
         }
     }
 
@@ -85,12 +94,12 @@ public class PlayerController : MonoBehaviour
         //comprueba que tocas un objeto del nombre item
         if (collision.gameObject.tag == "Item")
         {
-            //print(has tocado el item)
+            print("has tocado el item");
 
             //destruye el objeto contra el que colisionas
             Destroy(collision.gameObject);
         }
-
+        /*
         //comprueba que colisionas contra un objeto que tiene como tag Enemy
         if (collision.gameObject.tag == "Enemy")
         {
@@ -100,7 +109,7 @@ public class PlayerController : MonoBehaviour
             //da un movimiento hacia arriba, usando la variable FuerzaRebote
             rb.velocity = new Vector2(rb.velocity.x, hopForce);
 
-        }
+        }*/
 
         if (collision.gameObject.tag == "Suelo")
         {
@@ -120,5 +129,37 @@ public class PlayerController : MonoBehaviour
     void reinicio()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void attackControll()
+    {
+        //el jugador ataca cuando pulsa el click izquierdo del ratón
+        if(Input.GetMouseButton(0) && !isAttacking)
+        {
+            StartCoroutine(playerAttack());
+        }
+    }
+
+    IEnumerator playerAttack()
+    {
+        isAttacking = true;
+        weapon.SetActive(true);
+
+        float startAngle = 60f;   // arriba
+        float endAngle = -60f;    // abajo
+        float duration = 0.3f;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            float angle = Mathf.Lerp(startAngle, endAngle, time / duration);
+            armPivot.localRotation = Quaternion.Euler(0, 0, angle);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        armPivot.localRotation = Quaternion.identity;
+        weapon.SetActive(false);
+        isAttacking = false;
     }
 }

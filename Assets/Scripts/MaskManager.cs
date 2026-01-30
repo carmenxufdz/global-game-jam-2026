@@ -35,11 +35,11 @@ public class MaskManager : MonoBehaviour
     {
         canAct = false; // bloqueamos acciones mientras dura el "cambio"
 
-        // Insertar animación del jugador (si eso...)
+        // Insertar animaciï¿½n del jugador (si eso...)
 
-        yield return new WaitForSeconds(2f); // espera X segundos durante la animación
+        yield return new WaitForSeconds(2f); // espera X segundos durante la animaciï¿½n
 
-        // Cambiamos la máscara y actualizamos el mundo después del delay
+        // Cambiamos la mï¿½scara y actualizamos el mundo despuï¿½s del delay
         mask = !mask;
         ActualizarMundo();
 
@@ -56,8 +56,8 @@ public class MaskManager : MonoBehaviour
     void ActualizarEnemigos()
     {
         // Enemigos sombra:
-        // activos si máscara = true O vida < 50%
-        if (mask || player.sanityActual < player.sanityMax / 2f)
+        // activos si mï¿½scara = true O vida < 50%
+        if (mask || player.currentSanity < player.maxSanity / 2f)
         {
             shadowEnemys.SetActive(true);
         }

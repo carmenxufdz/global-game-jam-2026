@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 abstract public class Enemy : MonoBehaviour
@@ -7,6 +8,10 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected int speed;
     [SerializeField] protected int health;
     [SerializeField] protected int damage;
+
+    [SerializeField] protected float attackRange;
+
+    [SerializeField] protected GameObject player;
 
     [SerializeField] protected GameObject gameManager;
     

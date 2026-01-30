@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
         }*/
 
-        if (collision.gameObject.tag == "Suelo")
+        if (collision.gameObject.tag == "Floor")
         {
             //Ponemos la variable en true
             isGrounded = true;
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Suelo")
+        if (collision.gameObject.tag == "Floor")
         {
             isGrounded = false;
         }

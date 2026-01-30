@@ -11,6 +11,14 @@ public class FlyingEnemy : Enemy
     }
     override protected void Attack()
     {
-        rb.velocity = new Vector2(-speed, 0);
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+
+        if(distance <= attackRange){
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            rb.velocity = direction * speed;
+        }
+        else{
+            rb.velocity = Vector2.zero;
+        }
     }
 }

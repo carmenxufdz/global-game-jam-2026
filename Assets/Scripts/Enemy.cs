@@ -14,6 +14,8 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject player;
 
     [SerializeField] protected GameObject gameManager;
+
+    protected bool canAttack;
     
     protected Rigidbody2D rb;
     // Start is called before the first frame update
@@ -34,5 +36,14 @@ abstract public class Enemy : MonoBehaviour
 
     protected abstract void Attack();
 
+    protected virtual void OnBecameVisible()
+    {
+       canAttack = true; 
+    }
+
+    protected virtual void OecameInvisible()
+    {   
+        canAttack = false;
+    }
 
 }

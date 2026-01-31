@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
         {
             case UIType.Gameplay:
                 Time.timeScale = 1;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 hudUI.SetActive(true);
                 pauseUI.SetActive(false);
                 gameOverUI.SetActive(false);
@@ -42,6 +44,8 @@ public class UIManager : MonoBehaviour
                 break;
             case UIType.Pause:
                 Time.timeScale = 0;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 hudUI.SetActive(false);
                 pauseUI.SetActive(true);
                 gameOverUI.SetActive(false);
@@ -53,6 +57,8 @@ public class UIManager : MonoBehaviour
                 break;
             case UIType.GameOver:
                 Time.timeScale = 0;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 hudUI.SetActive(false);
                 pauseUI.SetActive(false);
                 gameOverUI.SetActive(true);

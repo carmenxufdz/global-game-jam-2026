@@ -22,4 +22,9 @@ public class FlyingEnemy : Enemy
             rb.velocity = new Vector2(0,0);
         }
     }
+
+    protected override void AnimationManager()
+    {
+        // No animation for flying enemy
+    }
 }

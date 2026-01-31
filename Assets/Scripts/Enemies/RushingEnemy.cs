@@ -55,4 +55,9 @@ public class RushingEnemy : Enemy
     {
         rushingEnemyManager = manager;
     }
+
+    protected override void AnimationManager()
+    {
+        // No animation for rushing enemy
+    }
 }

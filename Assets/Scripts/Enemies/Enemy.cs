@@ -16,10 +16,7 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected int damage;
     [SerializeField] protected EnemyType type;
 
-    //[SerializeField] protected Sprite goodSprite;
-    //[SerializeField] protected Sprite badSprite;
-
-    //protected SpriteRenderer spriteRenderer;
+    protected Animator animator;
     protected bool canAttack;
     
     protected Rigidbody2D rb;
@@ -44,6 +41,8 @@ abstract public class Enemy : MonoBehaviour
                 transform.localScale = new Vector2(-1, 1);
             }
         }
+
+        AnimationManager();
     }
 
     public void Init(GameObject player, GameObject gameManager)
@@ -67,20 +66,6 @@ abstract public class Enemy : MonoBehaviour
     public EnemyType GetEnemyType() => type;
     public int GetHealth() => health;
 
-/*
-    void ActualizarSprite()
-    {
-        if (gameManager.GetComponent<MaskManager>().mask)
-        {
-            spriteRenderer.sprite = badSprite;
-        }
-        else
-        {
-            spriteRenderer.sprite = goodSprite;
-        }
-    }
-    */
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         print("Enemy trigger enter");
@@ -100,4 +85,6 @@ abstract public class Enemy : MonoBehaviour
             hit = false;
         }
     }
+
+    protected abstract void AnimationManager();
 }

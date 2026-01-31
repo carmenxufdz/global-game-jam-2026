@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2160464933055845390}
   - component: {fileID: 7553521270617831858}
   - component: {fileID: 7644499180227046201}
+  - component: {fileID: 3903999752471127105}
   m_Layer: 7
   m_Name: WalkingEnemy
   m_TagString: Enemy
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 293ce131f91389842b277ade609eae0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 000531b7f484b6e4aaa7a066c4e20e69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.953125}
+  m_Size: {x: 1.08, y: 1.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -170,8 +171,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0033404827, y: -0.07014251}
-  m_Size: {x: 0.779552, y: 0.859715}
+  m_Offset: {x: -0.02866292, y: -0.07064569}
+  m_Size: {x: 0.69950724, y: 0.6995075}
   m_Direction: 0
 --- !u!61 &7644499180227046201
 BoxCollider2D:
@@ -205,19 +206,40 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3965981, y: -0.08752382}
+  m_Offset: {x: -0.30822086, y: -0.108361244}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.953125}
-    newSize: {x: 1, y: 0.953125}
+    oldSize: {x: 0.84375, y: 0.875}
+    newSize: {x: 1.08, y: 1.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22548437, y: 0.5609591}
+  m_Size: {x: 0.23739147, y: 0.5774789}
   m_EdgeRadius: 0
+--- !u!95 &3903999752471127105
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604056936659428422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5700d1f64b2c9f54eac35b043a4680ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7114752059641801022
 GameObject:
   m_ObjectHideFlags: 0

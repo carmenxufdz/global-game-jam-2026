@@ -11,7 +11,7 @@ public class WalkingEnemy : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         type = EnemyType.Walking;
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         hit = false;
     }
     override protected void Attack()
@@ -31,6 +31,11 @@ public class WalkingEnemy : Enemy
     {
         // Devuelve true si detecta suelo
         return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+    }
+
+    protected override void AnimationManager()
+    {
+        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask);
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isDead;
     Rigidbody2D rb;                 //referencia a rigidBody2D
     CapsuleCollider2D capsule;      //Referencia a un collider 2D de capsula
+    public Slider lifeSlider;       //slider de la vida/sanidad del jugador
 
     public float currentSanity;
     public float maxSanity;
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
 
         maskManager= GameObject.FindGameObjectWithTag("GameController").GetComponent<MaskManager>();
+
+        lifeSlider.maxValue = maxSanity;
     }
 
     void Update()
@@ -62,6 +66,8 @@ public class PlayerController : MonoBehaviour
                 //ponemos nuestra escala en x:-1 e Y:1, dandose la vuelta
                 transform.localScale = new Vector2(-1, 1);
             }
+
+            lifeSlider.value = currentSanity;
 
             AttackControll();
             inShadowWorld();

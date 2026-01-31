@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isGrounded; //variable para comprobar si toca el suelo
     [SerializeField] bool isDead;
     Rigidbody2D rb;                 //referencia a rigidBody2D
-    CapsuleCollider2D capsule;      //Referencia a un collider 2D de capsula
+
     Animator animator;
     public Slider lifeSlider;       //slider de la vida/sanidad del jugador
 
@@ -29,13 +29,7 @@ public class PlayerController : MonoBehaviour
     public float blinkInterval = 0.1f;
 
     bool isInvulnerable = false;
-    /*
-    SpriteRenderer spriteRenderer;
-    void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-*/
+    
     void Start()
     {
         speed = 4;                  
@@ -43,7 +37,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 3;
 
-        capsule = GetComponent<CapsuleCollider2D>();
         maxSanity = 100;
         currentSanity = maxSanity;
 

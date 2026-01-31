@@ -44,8 +44,11 @@ public class RushingEnemy : Enemy
 
     override protected void OnBecameInvisible()
     {
-        if(canAttack)
-            rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
+        if(health <= 0)
+        {   
+            if(canAttack)
+                rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
+        }
     }
 
     public void ManagerSet(GameObject manager)

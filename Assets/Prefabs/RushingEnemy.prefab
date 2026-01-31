@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4274276691318547224}
   - component: {fileID: 7451981018597512106}
   - component: {fileID: 7169524561476864401}
+  - component: {fileID: 2946355867993924222}
   m_Layer: 7
   m_Name: RushingEnemy
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7329620697285094010}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.949149, y: 4.234213, z: 0.06779333}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.654088, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b74199abffedd7a429c9636bbe3bba13, type: 3}
+  m_Color: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,8 +169,6 @@ MonoBehaviour:
   health: 0
   damage: 0
   type: 0
-  goodSprite: {fileID: 0}
-  badSprite: {fileID: 0}
   rushingEnemyManager: {fileID: 0}
 --- !u!61 &7169524561476864401
 BoxCollider2D:
@@ -216,3 +215,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21404076, y: 0.8470564}
   m_EdgeRadius: 0
+--- !u!95 &2946355867993924222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329620697285094010}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c398bcf66f81a7740b67a129f2372ba9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

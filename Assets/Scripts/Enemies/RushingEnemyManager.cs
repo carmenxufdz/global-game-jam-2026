@@ -6,9 +6,8 @@ public class RushingEnemyManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject player;
-    [SerializeField] MaskManager maskManager;
     [SerializeField] GameObject gameManager;
-    GameObject child;
+    GameObject child = null;
 
     [SerializeField] GameObject childPrefab;
     // Start is called before the first frame update
@@ -17,13 +16,23 @@ public class RushingEnemyManager : MonoBehaviour
         this.player = player;
         this.gameManager = gameManager;
 
-        child = Instantiate(childPrefab, transform.position, Quaternion.identity, transform);
-        child.SetActive(true);                // Asegura que el GameObject está activo
-        child.GetComponent<RushingEnemy>().enabled = true; // Asegura que el script está activo
-        child.GetComponent<RushingEnemy>().Init(player, gameManager);
-        child.GetComponent<RushingEnemy>().ManagerSet(gameObject);
+        if (child == null)
+        {
+            CreateChild();
+        }
+
     }
 
+    public void CreateChild()
+    {
+        child = Instantiate(childPrefab, transform.position, Quaternion.identity, transform);
+        child.SetActive(true);
+
+        RushingEnemy enemy = child.GetComponent<RushingEnemy>();
+        enemy.enabled = true;
+        enemy.Init(player, gameManager);
+        enemy.ManagerSet(gameObject);
+    }
     public GameObject GetPlayer()
     {
         return player;
@@ -54,15 +63,9 @@ public class RushingEnemyManager : MonoBehaviour
     public void ResetEnemy()
     {
 
-        if(child.GetComponent<Enemy>().GetHealth() <= 0)
-        {   
-            Destroy(child.gameObject);
-            child = Instantiate(childPrefab, transform.position, Quaternion.identity, transform);
-            child.SetActive(true);                // Asegura que el GameObject está activo
-            child.GetComponent<RushingEnemy>().enabled = true; // Asegura que el script está activo
-            child.GetComponent<RushingEnemy>().Init(player, gameManager);
-            child.GetComponent<RushingEnemy>().ManagerSet(gameObject);
-        }
+        
+        Destroy(child.gameObject);
+        CreateChild();
 
     }
 

@@ -107,8 +107,6 @@ MonoBehaviour:
   health: 30
   damage: 10
   type: 0
-  goodSprite: {fileID: 21300000, guid: 293ce131f91389842b277ade609eae0e, type: 3}
-  badSprite: {fileID: 21300000, guid: 0febb844967b0b744a50997924d068e1, type: 3}
   groundCheck: {fileID: 6817834200536688926}
   groundLayer:
     serializedVersion: 2
@@ -187,7 +185,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -207,7 +205,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.38072538, y: -0.08752382}
+  m_Offset: {x: -0.3965981, y: -0.08752382}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -218,7 +216,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19373894, y: 0.5609591}
+  m_Size: {x: 0.22548437, y: 0.5609591}
   m_EdgeRadius: 0
 --- !u!1 &7114752059641801022
 GameObject:

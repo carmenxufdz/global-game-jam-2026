@@ -16,10 +16,10 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected int damage;
     [SerializeField] protected EnemyType type;
 
-    [SerializeField] protected Sprite goodSprite;
-    [SerializeField] protected Sprite badSprite;
+    //[SerializeField] protected Sprite goodSprite;
+    //[SerializeField] protected Sprite badSprite;
 
-    protected SpriteRenderer spriteRenderer;
+    //protected SpriteRenderer spriteRenderer;
     protected bool canAttack;
     
     protected Rigidbody2D rb;
@@ -29,7 +29,7 @@ abstract public class Enemy : MonoBehaviour
     protected abstract void Awake();
     protected virtual void Update()
     {
-        ActualizarSprite();
+        // ActualizarSprite();
         if(gameManager.GetComponent<MaskManager>().mask)
         {
             Attack();
@@ -67,6 +67,7 @@ abstract public class Enemy : MonoBehaviour
     public EnemyType GetEnemyType() => type;
     public int GetHealth() => health;
 
+/*
     void ActualizarSprite()
     {
         if (gameManager.GetComponent<MaskManager>().mask)
@@ -78,9 +79,11 @@ abstract public class Enemy : MonoBehaviour
             spriteRenderer.sprite = goodSprite;
         }
     }
+    */
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        print("Enemy trigger enter");
         if(collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)
         {
             print("Player hit enemy");

@@ -11,7 +11,7 @@ public class WalkingEnemy : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         type = EnemyType.Walking;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         hit = false;
     }
     override protected void Attack()

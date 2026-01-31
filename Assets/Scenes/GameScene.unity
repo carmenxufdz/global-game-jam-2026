@@ -2678,7 +2678,7 @@ Transform:
   m_GameObject: {fileID: 1089221207}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.4599, y: -2.48, z: -5}
+  m_LocalPosition: {x: 35.4599, y: -2.7, z: -5}
   m_LocalScale: {x: 0.9233971, y: 0.9161663, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4496,6 +4496,7 @@ GameObject:
   - component: {fileID: 2125891942}
   - component: {fileID: 2125891941}
   - component: {fileID: 2125891943}
+  - component: {fileID: 2125891944}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -4549,6 +4550,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1459549542}
+--- !u!114 &2125891944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125891940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f12cffd7d99a9c43b5689880a025139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1505264638}
+  background: {fileID: 389940894}
+  midleground: {fileID: 1674011994}
+  foreground: {fileID: 1089221208}
+  backSpeed: 0.1
+  midleSpeed: 0.3
+  frontSpeed: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

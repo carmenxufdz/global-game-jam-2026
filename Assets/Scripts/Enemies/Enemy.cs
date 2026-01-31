@@ -10,11 +10,10 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject gameManager;
 
-    [Header("Attributes")]
-    [SerializeField] protected int speed;
-    [SerializeField] protected int health;
-    [SerializeField] protected int damage;
-    [SerializeField] protected EnemyType type;
+    protected int speed;
+    protected int health;
+    protected int damage;
+    protected EnemyType type;
 
     protected Animator animator;
     protected bool canAttack;

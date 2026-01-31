@@ -14,6 +14,8 @@ public class RushingEnemy : Enemy
         type = EnemyType.Rushing;
         speed = 1000;
         canAttack = true;
+        health = 10;
+        damage = 1;
         animator = GetComponent<Animator>();
     }
 

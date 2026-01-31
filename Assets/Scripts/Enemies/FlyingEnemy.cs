@@ -9,6 +9,9 @@ public class FlyingEnemy : Enemy
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         type = EnemyType.Flying;
+        health = 20;
+        speed = 300;
+        damage = 5;
         animator = GetComponent<Animator>();
     }
     override protected void Attack()

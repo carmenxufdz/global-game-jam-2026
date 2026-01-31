@@ -13,6 +13,10 @@ public class WalkingEnemy : Enemy
         type = EnemyType.Walking;
         animator = GetComponent<Animator>();
         hit = false;
+        damage = 5;
+        speed = 200;
+        health = 30;
+        
     }
     override protected void Attack()
     {

@@ -16,7 +16,6 @@ public class EnemiesManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] GameObject walkingEnemyPrefab;
     [SerializeField] GameObject FlyingEnemyPrefab;
-    [SerializeField] GameObject rushingEnemyPrefab;
     [SerializeField] GameObject rushingEnemyManagerPrefab;
 
     private int totalEnemies;

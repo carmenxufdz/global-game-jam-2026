@@ -11,12 +11,25 @@ public class RushingEnemy : Enemy
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         type = EnemyType.Rushing;
+        speed = 1000;
     }
+
+
+    public void Init(GameObject player, GameObject gameManager)
+    {
+        this.player = player;
+        this.gameManager = gameManager;
+
+        // Aquí puedes inicializar todo lo que depende de estas referencias
+    }
+
+
 
     override protected void Attack()
     {
-        if(canAttack)
+        if(canAttack){
             rb.velocity = direction * speed * Time.deltaTime;
+        }
         else
             rb.velocity = new Vector2(0,0);
     }

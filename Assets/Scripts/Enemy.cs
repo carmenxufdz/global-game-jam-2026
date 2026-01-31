@@ -22,12 +22,8 @@ abstract public class Enemy : MonoBehaviour
     
     protected Rigidbody2D rb;
 
-    protected virtual void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
+    protected abstract void Awake();
+    protected virtual void Update()
     {
         if(gameManager.GetComponent<MaskManager>().mask)
         {

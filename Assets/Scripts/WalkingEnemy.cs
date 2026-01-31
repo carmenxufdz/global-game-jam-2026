@@ -15,7 +15,6 @@ public class WalkingEnemy : Enemy
     override protected void Attack()
     {
         if(canAttack && HasGroundAhead()){
-            print("Moving towards player...");
             Vector2 direction = player.transform.position - transform.position;
             direction = direction.normalized;
 
@@ -31,17 +30,5 @@ public class WalkingEnemy : Enemy
         // Devuelve true si detecta suelo
         return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
     }
-
-    void OnDrawGizmos()
-    {
-        if (groundCheck == null) return;
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(
-            groundCheck.position,
-            groundCheck.position + Vector3.down * groundCheckDistance
-        );
-    }
-
 
 }

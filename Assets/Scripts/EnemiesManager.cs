@@ -18,10 +18,13 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] GameObject walkingEnemyPrefab;
     [SerializeField] GameObject FlyingEnemyPrefab;
     [SerializeField] GameObject rushingEnemyPrefab;
+    [SerializeField] GameObject rushingEnemyManagerPrefab;
 
     private int totalEnemies;
     private Dictionary<Vector2,EnemyType> enemiesData = new();
     private Dictionary<EnemyType, GameObject> enemiesPrefabs;
+
+    private bool hasRun = false;
 
     void Start()
     {   
@@ -29,7 +32,7 @@ public class EnemiesManager : MonoBehaviour
         {
             {EnemyType.Walking, walkingEnemyPrefab},
             {EnemyType.Flying, FlyingEnemyPrefab},
-            {EnemyType.Rushing, rushingEnemyPrefab}
+            {EnemyType.Rushing, rushingEnemyManagerPrefab}
         };
 
         GetEnemiesData(); //Guardamos posicio y tipo de cada enemigo para generarlos después
@@ -38,10 +41,18 @@ public class EnemiesManager : MonoBehaviour
     void Update()
     {
         //Si se está cambiando el mundo
-        if (!maskManager.canAct)
+        if (!maskManager.canAct && !hasRun)
         {
-            DestroyEnemies(); //Eliminamos todos los enemigos
-            GenerateEnemies(); //Los generamos de nuevo en sus posiciones originales
+            StartCoroutine(DestroyEnemies()); //Eliminamos todos los enemigos
+            
+            StartCoroutine(GenerateEnemies()); //Los generamos de nuevo en sus posiciones originales
+
+            hasRun = true;
+        }
+        // Opcional: resetear si canAct vuelve a true
+        else if (maskManager.canAct && hasRun)
+        {
+            hasRun = false;
         }
     }
 
@@ -51,13 +62,17 @@ public class EnemiesManager : MonoBehaviour
         for(int i = 0; i < enemiesLayer.transform.childCount; i++)
         {
             GameObject enemy = enemiesLayer.transform.GetChild(i).gameObject;
-            enemiesData.Add(enemy.transform.position,enemy.GetComponent<Enemy>().GetEnemyType());
+            if(enemy.GetComponent<Enemy>() != null)
+                enemiesData.Add(enemy.transform.position,enemy.GetComponent<Enemy>().GetEnemyType());
+            else
+                enemiesData.Add(enemy.transform.position,EnemyType.Rushing);
             print("Enemigo guardado");
         }
     }
 
-    private void DestroyEnemies()
+    private IEnumerator DestroyEnemies()
     {
+        yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
         for(int i = 0; i < totalEnemies ; i++)
         {
             Destroy(enemiesLayer.transform.GetChild(i).gameObject);
@@ -65,14 +80,17 @@ public class EnemiesManager : MonoBehaviour
         }
     }
 
-    private void GenerateEnemies()
+    private IEnumerator GenerateEnemies()
     {
+        yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
         foreach(var enemyData in enemiesData)
         {
             Vector2 position = enemyData.Key;
             EnemyType type = enemyData.Value;
 
             GameObject prefab = enemiesPrefabs[type];
+
+            // Instanciamos enemigos normales
             GameObject enemy = Instantiate(
                 prefab,
                 position,
@@ -80,8 +98,14 @@ public class EnemiesManager : MonoBehaviour
                 enemiesLayer.transform
             );
 
-            enemy.GetComponent<Enemy>().Init(player,gameManager);
+            if(type == EnemyType.Rushing)
+            {
+                enemy.GetComponent<RushingEnemyManager>().Init(player,gameManager);
+            }
+            else
+                enemy.GetComponent<Enemy>().Init(player,gameManager);
             print("Enemigo generado");
+            
 
         }
     }

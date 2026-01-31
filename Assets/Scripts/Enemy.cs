@@ -64,5 +64,6 @@ abstract public class Enemy : MonoBehaviour
     }
 
     public EnemyType GetEnemyType() => type;
+    public int GetHealth() => health;
 
 }

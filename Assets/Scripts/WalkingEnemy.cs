@@ -9,6 +9,7 @@ public class WalkingEnemy : Enemy
     [SerializeField] private LayerMask groundLayer;
     override protected void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         type = EnemyType.Walking;
     }
     override protected void Attack()
@@ -29,6 +30,17 @@ public class WalkingEnemy : Enemy
     {
         // Devuelve true si detecta suelo
         return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+    }
+
+    void OnDrawGizmos()
+    {
+        if (groundCheck == null) return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(
+            groundCheck.position,
+            groundCheck.position + Vector3.down * groundCheckDistance
+        );
     }
 
 

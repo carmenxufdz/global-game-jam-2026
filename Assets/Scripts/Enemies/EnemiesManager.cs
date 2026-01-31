@@ -10,7 +10,6 @@ public class EnemiesManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject enemiesLayer; //Capa de los enemigos (shadow enemies)
-    [SerializeField] MaskManager maskManager;
     [SerializeField] GameObject gameManager;
     [SerializeField] GameObject player;
 
@@ -41,7 +40,7 @@ public class EnemiesManager : MonoBehaviour
     void Update()
     {
         //Si se está cambiando el mundo
-        if (!maskManager.canAct && !hasRun)
+        if (!gameManager.GetComponent<MaskManager>().canAct && !hasRun)
         {
             StartCoroutine(DestroyEnemies()); //Eliminamos todos los enemigos
             
@@ -50,7 +49,7 @@ public class EnemiesManager : MonoBehaviour
             hasRun = true;
         }
         // Opcional: resetear si canAct vuelve a true
-        else if (maskManager.canAct && hasRun)
+        else if (gameManager.GetComponent<MaskManager>().canAct && hasRun)
         {
             hasRun = false;
         }
@@ -102,8 +101,9 @@ public class EnemiesManager : MonoBehaviour
             {
                 enemy.GetComponent<RushingEnemyManager>().Init(player, gameManager);
             }
-            else
+            else{
                 enemy.GetComponent<Enemy>().Init(player,gameManager);
+            }
             print("Enemigo generado");
             
 

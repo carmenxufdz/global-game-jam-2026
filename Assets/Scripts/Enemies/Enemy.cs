@@ -14,27 +14,32 @@ abstract public class Enemy : MonoBehaviour
     [SerializeField] protected int speed;
     [SerializeField] protected int health;
     [SerializeField] protected int damage;
-
-    [SerializeField] protected float attackRange;
     [SerializeField] protected EnemyType type;
 
+    [SerializeField] protected Sprite goodSprite;
+    [SerializeField] protected Sprite badSprite;
+
+    protected SpriteRenderer spriteRenderer;
     protected bool canAttack;
     
     protected Rigidbody2D rb;
 
+    protected bool hit = false;
+
     protected abstract void Awake();
     protected virtual void Update()
     {
+        ActualizarSprite();
         if(gameManager.GetComponent<MaskManager>().mask)
         {
             Attack();
 
-                    // CAMBIAR DIRECCIÓN SPRITE
-            if (rb.velocity.x > 0)
+            // CAMBIAR DIRECCIÓN SPRITE
+            if (rb.velocity.x < 0 )
             {
                 transform.localScale = new Vector2(1, 1);
             }
-            else if (rb.velocity.x < 0)
+            else if (rb.velocity.x > 0)
             {
                 transform.localScale = new Vector2(-1, 1);
             }
@@ -62,4 +67,34 @@ abstract public class Enemy : MonoBehaviour
     public EnemyType GetEnemyType() => type;
     public int GetHealth() => health;
 
+    void ActualizarSprite()
+    {
+        if (gameManager.GetComponent<MaskManager>().mask)
+        {
+            spriteRenderer.sprite = badSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = goodSprite;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)
+        {
+            print("Player hit enemy");
+            hit = true;
+            player.GetComponent<PlayerController>().TakeDamage(damage);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            print("Player exit enemy");
+            hit = false;
+        }
+    }
 }

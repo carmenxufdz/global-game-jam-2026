@@ -11,10 +11,12 @@ public class WalkingEnemy : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         type = EnemyType.Walking;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        hit = false;
     }
     override protected void Attack()
     {
-        if(canAttack && HasGroundAhead()){
+        if(canAttack && HasGroundAhead() && !hit){
             Vector2 direction = player.transform.position - transform.position;
             direction = direction.normalized;
 

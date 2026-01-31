@@ -17,7 +17,6 @@ public class MaskManager : MonoBehaviour
     {
         mask = false;
         ActualizarMundo();
-        ActualizarEnemigos();
     }
 
     void Update()
@@ -27,8 +26,6 @@ public class MaskManager : MonoBehaviour
         {
             StartCoroutine(CambiarMundo());
         }
-
-        ActualizarEnemigos();
     }
 
     IEnumerator CambiarMundo()
@@ -53,17 +50,5 @@ public class MaskManager : MonoBehaviour
         shadowWorld.SetActive(mask);
     }
 
-    void ActualizarEnemigos()
-    {
-        // Enemigos sombra:
-        // activos si m�scara = true O vida < 50%
-        if (mask || player.currentSanity < player.maxSanity / 2f)
-        {
-            shadowEnemys.SetActive(true);
-        }
-        else
-        {
-            shadowEnemys.SetActive(false);
-        }
-    }
+
 }

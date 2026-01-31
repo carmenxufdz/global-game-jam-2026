@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5051886007589436454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmPivot
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1266851743368761258}
   - component: {fileID: 4809267566882278773}
   - component: {fileID: 3379845897943678086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4623283120428520337}
   - component: {fileID: 2380749963857471433}
   - component: {fileID: 9152211289341793479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerTest
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -283,8 +283,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0032029152}
-  m_Size: {x: 1, y: 1.9929032}
+  m_Offset: {x: 0.007575035, y: -0.011947393}
+  m_Size: {x: 0.7272911, y: 1.614141}
   m_Direction: 0
 --- !u!50 &4623283120428520337
 Rigidbody2D:
@@ -345,7 +345,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.97}
+  m_Offset: {x: 0, y: -0.8147074}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -356,7 +356,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6829118, y: 0.15763366}
+  m_Size: {x: 0.6829118, y: 0.15005851}
   m_EdgeRadius: 0
 --- !u!114 &9152211289341793479
 MonoBehaviour:

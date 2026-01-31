@@ -176,11 +176,11 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
     }
 
-    void playerDamaged(float damage)
+    public void TakeDamage(float damage)
     {
         currentSanity -= damage;
     }
-    void playerHealed(float health)
+    void PlayerHealed(float health)
     {
         currentSanity += health;
     }

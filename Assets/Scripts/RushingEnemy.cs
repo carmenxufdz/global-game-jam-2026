@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RusherEnemy : Enemy
+public class RushingEnemy : Enemy
 {
     private Vector2 direction;
     
-    override protected void Start()
+    override protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
+        type = EnemyType.Rushing;
     }
 
     override protected void Attack()
@@ -24,5 +25,14 @@ public class RusherEnemy : Enemy
     {
        direction = (player.transform.position - transform.position).normalized;
        canAttack = true; 
+    }
+
+    override protected void OnBecameInvisible()
+    {
+        //Para que se destruya si se sale de la camara despues de haber atacado
+        //if(canAttack)
+            //Destroy(gameObject);
+
+       canAttack = false; 
     }
 }

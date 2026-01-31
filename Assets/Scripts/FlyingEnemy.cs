@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class FlyingEnemy : Enemy
 {
-    override protected void Start()
+    override protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
+        type = EnemyType.Flying;
     }
     override protected void Attack()
     {

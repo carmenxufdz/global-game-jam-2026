@@ -7,6 +7,10 @@ public class WalkingEnemy : Enemy
     [SerializeField] private Transform groundCheck;
     private float groundCheckDistance = 0.5f;
     [SerializeField] private LayerMask groundLayer;
+    override protected void Awake()
+    {
+        type = EnemyType.Walking;
+    }
     override protected void Attack()
     {
         if(canAttack && HasGroundAhead()){

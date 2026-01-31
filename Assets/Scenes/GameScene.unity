@@ -6407,7 +6407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1590290493847347564, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.88
       objectReference: {fileID: 0}
     - target: {fileID: 1590290493847347564, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9099,8 +9099,8 @@ MonoBehaviour:
   background: {fileID: 389940894}
   midleground: {fileID: 1674011994}
   foreground: {fileID: 1089221208}
-  backSpeed: 0.1
-  midleSpeed: 0.3
+  backSpeed: 0.8
+  midleSpeed: 0.6
   frontSpeed: 0
 --- !u!114 &2125891945
 MonoBehaviour:
@@ -9118,8 +9118,8 @@ MonoBehaviour:
   background: {fileID: 1586260026}
   midleground: {fileID: 1959228681}
   foreground: {fileID: 1420880222}
-  backSpeed: 0.1
-  midleSpeed: 0.3
+  backSpeed: 0.8
+  midleSpeed: 0.6
   frontSpeed: 0
 --- !u!114 &2125891946
 MonoBehaviour:

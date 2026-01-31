@@ -261,7 +261,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7915279777367529311}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1db0e44fd8a205945a67596a5352c473, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -346,7 +346,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.1095729}
+  m_Offset: {x: -0.016774684, y: -1.1137667}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -357,7 +357,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6829118, y: 0.1403904}
+  m_Size: {x: 0.32225138, y: 0.14877796}
   m_EdgeRadius: 0
 --- !u!114 &9152211289341793479
 MonoBehaviour:
@@ -375,7 +375,9 @@ MonoBehaviour:
   jumpForce: 0
   isGrounded: 0
   isDead: 0
-  lifeSlider: {fileID: 0}
+  uiManager: {fileID: 0}
+  lightLifeSlider: {fileID: 0}
+  shadowLifeSlider: {fileID: 0}
   currentSanity: 0
   maxSanity: 0
   weapon: {fileID: 3910496357976798206}

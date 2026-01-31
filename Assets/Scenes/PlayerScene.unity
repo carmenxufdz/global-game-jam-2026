@@ -255,8 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979973050522ecc4b942f7908f466482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-=======
   speed: 0
   jumpForce: 0
   hopForce: 0
@@ -313,7 +311,6 @@ Transform:
   - {fileID: 937433653}
   m_Father: {fileID: 711101039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &288867166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,9 +1863,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8798758270862954557, guid: 4acb6cadb3be68a49b88cc9149fa1254, type: 3}
   m_PrefabInstance: {fileID: 1461662081}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
---- !u!1 &1491009448
-=======
 --- !u!1 &1896972260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +2076,6 @@ Tilemap:
     e32: 0
     e33: 1
 --- !u!1 &2046666196
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2097,8 +2090,6 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< Updated upstream
-=======
   m_IsActive: 0
 --- !u!4 &2046666197
 Transform:
@@ -3152,7 +3143,6 @@ GameObject:
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
->>>>>>> Stashed changes
   m_IsActive: 1
 --- !u!4 &1491009449
 Transform:

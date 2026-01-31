@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParalaxController : MonoBehaviour
+public class ParallaxController : MonoBehaviour
 {
     [Header("Objects")]
     public Transform cam;          // Cámara principal

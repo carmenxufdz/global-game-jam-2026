@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isDead;
     Rigidbody2D rb;                 //referencia a rigidBody2D
     CapsuleCollider2D capsule;      //Referencia a un collider 2D de capsula
+    Animator animator;
     public Slider lifeSlider;       //slider de la vida/sanidad del jugador
 
     public float currentSanity;
@@ -28,13 +29,13 @@ public class PlayerController : MonoBehaviour
     public float blinkInterval = 0.1f;
 
     bool isInvulnerable = false;
-    
+    /*
     SpriteRenderer spriteRenderer;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
+*/
     void Start()
     {
         speed = 4;                  
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         maskManager= GameObject.FindGameObjectWithTag("GameController").GetComponent<MaskManager>();
 
         lifeSlider.maxValue = maxSanity;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -81,21 +83,17 @@ public class PlayerController : MonoBehaviour
 
             AttackControll();
             inShadowWorld();
+
+            if(rb.velocity.x != 0 && isGrounded)
+            {
+                animator.SetBool("walking", true);
+            }
+            else
+            {
+                animator.SetBool("walking", false);
+            }
         }
     }
-
-
-    //este m�todo controla colisiones SOLIDAS
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //comprueba que colisionas contra un objeto que tiene como tag Enemy
-        if (collision.gameObject.tag == "Enemy" && !isInvulnerable)
-        {
-            //daña al jugador
-            //el enemigo llama al playerDamaged() o si no se hace aquí
-            //si vida es 0 = muerte
-        }
-    }*/
 
     //este m�todo controla colisiones NO SOLIDAS (trigger)
     private void OnTriggerEnter2D(Collider2D collision)
@@ -174,9 +172,11 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(Invulnerability());
+        //StartCoroutine(Invulnerability());
 
     }
+
+    /*
     IEnumerator Invulnerability()
     {
         isInvulnerable = true;
@@ -193,6 +193,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.enabled = true;
         isInvulnerable = false;
     }
+    */
 
 
 
@@ -207,10 +208,12 @@ public class PlayerController : MonoBehaviour
     {
         if (maskManager.mask && sanityCoroutine == null)
         {
+            animator.SetBool("mask", true);
             sanityCoroutine = StartCoroutine(LoseSanity());
         }
         else if (!maskManager.mask && sanityCoroutine != null)
         {
+            animator.SetBool("mask", false);
             StopCoroutine(sanityCoroutine);
             sanityCoroutine = null;
 

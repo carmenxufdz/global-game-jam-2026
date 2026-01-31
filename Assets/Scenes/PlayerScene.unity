@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 74104609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -315,8 +315,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0032029152}
-  m_Size: {x: 1, y: 1.9929032}
+  m_Offset: {x: 0.0032870173, y: -0.06582004}
+  m_Size: {x: 0.6910399, y: 1.5261763}
   m_Direction: 0
 --- !u!114 &74104615
 MonoBehaviour:
@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 288867167}
   - component: {fileID: 288867169}
   - component: {fileID: 288867168}
+  - component: {fileID: 288867170}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Floor
@@ -1220,6 +1221,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &288867170
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288867166}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &448108551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 448108552}
   m_Layer: 0
-  m_Name: ShadowEnemys
+  m_Name: ShadowEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1301,7 @@ GameObject:
   - component: {fileID: 505384794}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1628,37 +1665,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8798758270862954557, guid: 4acb6cadb3be68a49b88cc9149fa1254, type: 3}
   m_PrefabInstance: {fileID: 1461662081}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1491009448
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1491009449}
-  m_Layer: 0
-  m_Name: NormalScene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1491009449
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491009448}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2046666196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1836,5 @@ SceneRoots:
   - {fileID: 1379295185}
   - {fileID: 711101039}
   - {fileID: 448108552}
-  - {fileID: 1491009449}
   - {fileID: 848819221}
   - {fileID: 505384795}

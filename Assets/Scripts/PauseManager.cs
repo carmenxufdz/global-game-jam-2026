@@ -14,18 +14,18 @@ public class PauseMenu : MonoBehaviour
 
     public void Update()
     {   
-        Time.timeScale = 0; //Se pausa todo
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {   
+            print("Tecla pulsada");
             //Si ya está activado 
             if(pauseMenu.gameObject.activeSelf)
             {   
+                Time.timeScale = 1; //Se reanuda
                 pauseMenu.gameObject.SetActive(false);
             }
             else 
             {   
-                print("Se cambia a true");
+                Time.timeScale = 0; //Se pausa todo
                 pauseMenu.gameObject.SetActive(true);
             }
         }

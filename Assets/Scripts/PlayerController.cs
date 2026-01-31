@@ -109,6 +109,12 @@ public class PlayerController : MonoBehaviour
             //Ponemos la variable en true
             isGrounded = true;
         }
+
+        if(collision.gameObject.tag == "Thorn")
+        {
+            currentSanity = 0;
+            isDead = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)

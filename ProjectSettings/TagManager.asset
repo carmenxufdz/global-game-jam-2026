@@ -9,6 +9,7 @@ TagManager:
   - Stick
   - Wall
   - SoundM
+  - Thorn
   layers:
   - Default
   - TransparentFX

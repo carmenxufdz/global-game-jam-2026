@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Tile plataforma MALA_0
+  m_Name: Tile plataforma BUENA (3)_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2040765946, guid: ef1b52369823635499e727d34f447b02, type: 3}
+  m_Sprite: {fileID: 2083762097, guid: b29ac0b3f840bc44088f2209ff4a5e9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

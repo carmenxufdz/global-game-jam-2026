@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ef1b52369823635499e727d34f447b02
+guid: b29ac0b3f840bc44088f2209ff4a5e9b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tile plataforma MALA_0
+      name: Tile plataforma BUENA (3)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35ab86ce54f9eb0429e5ceacef6f1329
-      internalID: -2040765946
+      spriteID: cd4c210b85beed04e8c261488c72ed74
+      internalID: -11282774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tile plataforma MALA_1
+      name: Tile plataforma BUENA (3)_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a24cd9d5dc1f5d64a83cf7c6dded401b
-      internalID: -2128675256
+      spriteID: e9a3c39e81b3ad645a5301076f6fa527
+      internalID: 2083762097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tile plataforma MALA_2
+      name: Tile plataforma BUENA (3)_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bd02383a45fc574e9ed3d348c217372
-      internalID: 1430011180
+      spriteID: fef1d8882f6034549bb3b2d30839b9ff
+      internalID: -1074898604
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tile plataforma MALA_0: -2040765946
-      Tile plataforma MALA_1: -2128675256
-      Tile plataforma MALA_2: 1430011180
+      Tile plataforma BUENA (3)_0: -11282774
+      Tile plataforma BUENA (3)_1: 2083762097
+      Tile plataforma BUENA (3)_2: -1074898604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

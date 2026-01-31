@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    void PlayerHealed(float health)
+    public void PlayerHealed(float health)
     {
         currentSanity += health;
     }

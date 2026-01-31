@@ -70,6 +70,7 @@ public class UIManager : MonoBehaviour
     public void RestartButton()
     {
         currentMenu = UIType.Gameplay;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void HomeButton()

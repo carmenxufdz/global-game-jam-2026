@@ -23,6 +23,18 @@ public class PlayerController : MonoBehaviour
 
     MaskManager maskManager;
 
+    //invulnerability
+    public float invulnerabilityTime = 2f;
+    public float blinkInterval = 0.1f;
+
+    bool isInvulnerable = false;
+    
+    SpriteRenderer spriteRenderer;
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void Start()
     {
         speed = 4;                  
@@ -74,30 +86,16 @@ public class PlayerController : MonoBehaviour
 
 
     //este m�todo controla colisiones SOLIDAS
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         //comprueba que colisionas contra un objeto que tiene como tag Enemy
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && !isInvulnerable)
         {
-            /*
-            //cambio la variable de animacion muerto a true
-            isDead = true;
-
-            //desactivamos el capsule collider
-            capsule.enabled = false;
-
-            rb.velocity = new Vector2(0, 15);
-
-            //A los 2 segundos reinica la escena
-            Invoke("reinicio", 2f);*/
             //daña al jugador
+            //el enemigo llama al playerDamaged() o si no se hace aquí
             //si vida es 0 = muerte
-            if(currentSanity<=0)
-            {
-                //ded
-            }
         }
-    }
+    }*/
 
     //este m�todo controla colisiones NO SOLIDAS (trigger)
     private void OnTriggerEnter2D(Collider2D collision)
@@ -165,8 +163,39 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isInvulnerable)
+            return; // no recibe daño
+
         currentSanity -= damage;
+
+        if (currentSanity <= 0)
+        {
+            // muerte
+            return;
+        }
+
+        StartCoroutine(Invulnerability());
+
     }
+    IEnumerator Invulnerability()
+    {
+        isInvulnerable = true;
+
+        float timer = 0f;
+
+        while (timer < invulnerabilityTime)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            yield return new WaitForSeconds(blinkInterval);
+            timer += blinkInterval;
+        }
+
+        spriteRenderer.enabled = true;
+        isInvulnerable = false;
+    }
+
+
+
     void PlayerHealed(float health)
     {
         currentSanity += health;

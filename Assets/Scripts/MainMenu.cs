@@ -20,6 +20,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    public void HomeButton()
+    {
+        audio.PlayOneShot(select);
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+
     public void QuitGame()
     {
         audio.PlayOneShot(select);

@@ -47,7 +47,10 @@ public class UIManager : MonoBehaviour
 
                 if(player.GetComponent<PlayerController>().currentSanity <= 0)
                 {
-                    currentMenu = UIType.GameOver;
+                    //currentMenu = UIType.GameOver;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    SceneManager.LoadSceneAsync("GameOverScene");
                 }
                 break;
             case UIType.Pause:

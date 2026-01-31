@@ -9,6 +9,7 @@ public class FlyingEnemy : Enemy
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         type = EnemyType.Flying;
+        animator = GetComponent<Animator>();
     }
     override protected void Attack()
     {
@@ -25,6 +26,6 @@ public class FlyingEnemy : Enemy
 
     protected override void AnimationManager()
     {
-        // No animation for flying enemy
+        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask);
     }
 }

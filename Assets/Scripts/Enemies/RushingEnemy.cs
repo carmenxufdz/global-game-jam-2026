@@ -17,21 +17,11 @@ public class RushingEnemy : Enemy
     }
 
 
-    public void Init(GameObject player, GameObject gameManager)
-    {
-        this.player = player;
-        this.gameManager = gameManager;
-
-        // Aquí puedes inicializar todo lo que depende de estas referencias
-    }
-
-
     override protected void Attack()
     {
         if (canAttack)
         {
             //rb.velocity = direction * speed * Time.deltaTime; //
-            print("te ataco");
             StartCoroutine(WaitForAnimation());
         }
         else
@@ -40,8 +30,7 @@ public class RushingEnemy : Enemy
 
     IEnumerator WaitForAnimation()
     {
-        print("ready?");
-        yield return new WaitForSeconds(2f);//cambiar el 2f por la duración de la animación
+        yield return new WaitForSeconds(1.0f);//cambiar el 2f por la duración de la animación
         rb.velocity = direction * speed * Time.deltaTime;
         print("shoot");
     }
@@ -77,7 +66,7 @@ public class RushingEnemy : Enemy
 
     protected override void AnimationManager()
     {
-        // No animation for rushing enemy
+        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask);
     }
 
     public override void TakeDamage(int damage)

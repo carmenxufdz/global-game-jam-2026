@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
     void AttackControll()
     {
         //el jugador ataca cuando pulsa el click izquierdo del raton
-        if(Input.GetMouseButtonDown(0) && !isAttacking && uiManager.GetComponent<UIManager>().GetType() == UIType.Gameplay)
+        if(Input.GetMouseButtonDown(0) && !isAttacking && uiManager.GetComponent<UIManager>().GetUIType() == UIType.Gameplay)
         {
             StartCoroutine(PlayerAttack());
         }

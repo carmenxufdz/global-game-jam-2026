@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
-    public UIType GetType() => currentMenu;
+    public UIType GetUIType() => currentMenu;
     public void ResumeButton()
     {
         audio.PlayOneShot(select);

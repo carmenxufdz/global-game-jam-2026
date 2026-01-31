@@ -31,7 +31,15 @@ public class PlayerController : MonoBehaviour
     public float blinkInterval = 0.1f;
 
     bool isInvulnerable = false;
-    
+
+    //audio
+    AudioSource audio;
+    AudioSource audioManager;
+    [SerializeField] AudioClip jumpClip;
+    [SerializeField] AudioClip walkClip;
+    [SerializeField] AudioClip attackClip;
+    [SerializeField] AudioClip hurtClip;
+
     void Start()
     {
         speed = 4;                  
@@ -47,6 +55,12 @@ public class PlayerController : MonoBehaviour
         lightLifeSlider.maxValue = maxSanity;
         shadowLifeSlider.maxValue = maxSanity;
         animator = GetComponent<Animator>();
+
+        //
+        audioManager = GameObject.FindGameObjectWithTag("SoundM").GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
+        audio.clip = walkClip;
+        audio.loop = true;
     }
 
     void Update()
@@ -59,6 +73,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 animator.SetBool("jumping", true);
+                audioManager.PlayOneShot(jumpClip);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 isGrounded = false;
             }
@@ -84,10 +99,13 @@ public class PlayerController : MonoBehaviour
 
             if(rb.velocity.x != 0 && isGrounded)
             {
+                if (!audio.isPlaying)
+                    audio.Play();
                 animator.SetBool("walking", true);
             }
             else
             {
+                audio.Stop();
                 animator.SetBool("walking", false);
             }
         }
@@ -145,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = true;
         weapon.SetActive(true);
+        audioManager.PlayOneShot(attackClip);
 
         float startAngle = 60f;   // arriba
         float endAngle = -60f;    // abajo

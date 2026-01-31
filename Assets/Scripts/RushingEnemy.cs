@@ -5,6 +5,7 @@ using UnityEngine;
 public class RushingEnemy : Enemy
 {
     private Vector2 direction;
+    [SerializeField] GameObject rushingEnemyManager;
     
     override protected void Awake()
     {
@@ -12,6 +13,7 @@ public class RushingEnemy : Enemy
         rb.gravityScale = 0;
         type = EnemyType.Rushing;
         speed = 1000;
+        canAttack = true;
     }
 
 
@@ -42,10 +44,12 @@ public class RushingEnemy : Enemy
 
     override protected void OnBecameInvisible()
     {
-        //Para que se destruya si se sale de la camara despues de haber atacado
-        //if(canAttack)
-            //Destroy(gameObject);
+        if(canAttack)
+            rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
+    }
 
-       canAttack = false; 
+    public void ManagerSet(GameObject manager)
+    {
+        rushingEnemyManager = manager;
     }
 }

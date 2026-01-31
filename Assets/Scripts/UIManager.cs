@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
-
+    public UIType GetType() => currentMenu;
     public void ResumeButton()
     {
         currentMenu = UIType.Gameplay;

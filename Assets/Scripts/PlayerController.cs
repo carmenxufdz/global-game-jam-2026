@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpForce; //variable para el valor de la velocidad de salto
     [SerializeField] bool isGrounded; //variable para comprobar si toca el suelo
     [SerializeField] bool isDead;
+    [SerializeField] GameObject uiManager;
     Rigidbody2D rb;                 //referencia a rigidBody2D
 
     Animator animator;
@@ -126,7 +127,7 @@ public class PlayerController : MonoBehaviour
     void AttackControll()
     {
         //el jugador ataca cuando pulsa el click izquierdo del raton
-        if(Input.GetMouseButtonDown(0) && !isAttacking)
+        if(Input.GetMouseButtonDown(0) && !isAttacking && uiManager.GetComponent<UIManager>().GetType() == UIType.Gameplay)
         {
             StartCoroutine(PlayerAttack());
         }

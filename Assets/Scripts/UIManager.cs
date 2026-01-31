@@ -13,10 +13,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject player;
     private UIType currentMenu;
+
+    //audio
+    [SerializeField] AudioClip select;
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
         currentMenu = UIType.Gameplay;
+        audio = GameObject.FindGameObjectWithTag("SoundM").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -70,17 +76,20 @@ public class UIManager : MonoBehaviour
     public UIType GetType() => currentMenu;
     public void ResumeButton()
     {
+        audio.PlayOneShot(select);
         currentMenu = UIType.Gameplay;
     }
 
     public void RestartButton()
     {
+        audio.PlayOneShot(select);
         currentMenu = UIType.Gameplay;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void HomeButton()
     {
+        audio.PlayOneShot(select);
         SceneManager.LoadSceneAsync("MainMenu");
     }
 }

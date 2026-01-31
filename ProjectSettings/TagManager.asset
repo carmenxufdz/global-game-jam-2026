@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Stick
   - Wall
+  - SoundM
   layers:
   - Default
   - TransparentFX

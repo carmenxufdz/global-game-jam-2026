@@ -77,6 +77,7 @@ public class RushingEnemy : Enemy
             player.GetComponent<PlayerController>().TakeDamage(damage);
             rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
         }
+    }
 
     protected override void AnimationManager()
     {

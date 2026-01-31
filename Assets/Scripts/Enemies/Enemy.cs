@@ -22,6 +22,12 @@ abstract public class Enemy : MonoBehaviour
 
     protected bool hit = false;
 
+    //audio
+    AudioSource audio;
+    public AudioSource audioManager;
+    [SerializeField] AudioClip deathClip;
+    [SerializeField] public AudioClip attackClip;
+
     protected abstract void Awake();
     protected virtual void Update()
     {
@@ -29,6 +35,7 @@ abstract public class Enemy : MonoBehaviour
         if(gameManager.GetComponent<MaskManager>().mask)
         {
             Attack();
+            //audioManager.PlayOneShot(attackClip);
 
             // CAMBIAR DIRECCIÓN SPRITE
             if (rb.velocity.x < 0 )
@@ -44,10 +51,11 @@ abstract public class Enemy : MonoBehaviour
         AnimationManager();
     }
 
-    public void Init(GameObject player, GameObject gameManager)
+    public void Init(GameObject player, GameObject gameManager, GameObject audioManager)
     {
         this.player = player;
         this.gameManager = gameManager;
+        this.audioManager = audioManager.GetComponent<AudioSource>();
     }
 
     protected abstract void Attack();
@@ -90,7 +98,8 @@ abstract public class Enemy : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
-        if(health <= 0)
+        audioManager.PlayOneShot(deathClip);
+        if (health <= 0)
         {
             Destroy(gameObject);
             player.GetComponent<PlayerController>().PlayerHealed(10);

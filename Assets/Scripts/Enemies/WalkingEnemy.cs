@@ -25,6 +25,7 @@ public class WalkingEnemy : Enemy
             direction = direction.normalized;
 
             rb.velocity = new Vector2( direction.x * speed * Time.deltaTime, 0f);
+            this.audioManager.PlayOneShot(this.attackClip);
         }
         else{
             rb.velocity = new Vector2(0,0);

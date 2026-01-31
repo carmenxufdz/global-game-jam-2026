@@ -165,11 +165,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   gameManager: {fileID: 0}
-  speed: 1500
-  health: 10
-  damage: 0
-  type: 0
+  audioManager: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 39f7a1542bf1b87439a8da7e8ea133aa, type: 3}
+  attackClip: {fileID: 8300000, guid: 5fe92ba3be9760e4ebe54b57efac6498, type: 3}
   rushingEnemyManager: {fileID: 0}
+  launchClip: {fileID: 8300000, guid: d64ab0cd88eb2204489f3a52f388f278, type: 3}
 --- !u!61 &7169524561476864401
 BoxCollider2D:
   m_ObjectHideFlags: 0

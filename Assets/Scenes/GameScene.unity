@@ -3801,6 +3801,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2125891940}
     - target: {fileID: 7417071638102022954, guid: ae0839c908f77484bb61521fe7b2db77, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 447185797}
+    - target: {fileID: 7417071638102022954, guid: ae0839c908f77484bb61521fe7b2db77, type: 3}
       propertyPath: enemiesLayer
       value: 
       objectReference: {fileID: 1035752539}

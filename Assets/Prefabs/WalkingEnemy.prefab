@@ -104,10 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   gameManager: {fileID: 0}
-  speed: 300
-  health: 30
-  damage: 10
-  type: 0
+  audioManager: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 39f7a1542bf1b87439a8da7e8ea133aa, type: 3}
+  attackClip: {fileID: 8300000, guid: 5fe92ba3be9760e4ebe54b57efac6498, type: 3}
   groundCheck: {fileID: 6817834200536688926}
   groundLayer:
     serializedVersion: 2

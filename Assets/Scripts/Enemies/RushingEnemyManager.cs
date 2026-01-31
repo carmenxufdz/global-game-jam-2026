@@ -7,6 +7,7 @@ public class RushingEnemyManager : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject player;
     [SerializeField] GameObject gameManager;
+    [SerializeField] GameObject audioManager;
     GameObject child = null;
 
     [SerializeField] GameObject childPrefab;
@@ -30,7 +31,7 @@ public class RushingEnemyManager : MonoBehaviour
 
         RushingEnemy enemy = child.GetComponent<RushingEnemy>();
         enemy.enabled = true;
-        enemy.Init(player, gameManager);
+        enemy.Init(player, gameManager, audioManager);
         enemy.ManagerSet(gameObject);
     }
     public GameObject GetPlayer()

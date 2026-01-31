@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlyingEnemy : Enemy
 {
+    bool attackSoundPlayed;
+
     override protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,9 +23,15 @@ public class FlyingEnemy : Enemy
         if(canAttack){
             Vector3 direction = (player.transform.position - transform.position).normalized;
             rb.velocity = direction * speed * Time.deltaTime;
+            if (!attackSoundPlayed)
+            {
+                audioManager.PlayOneShot(attackClip);
+                attackSoundPlayed = true;
+            }
         }
         else{
             rb.velocity = new Vector2(0,0);
+            attackSoundPlayed = false;
         }
     }
 

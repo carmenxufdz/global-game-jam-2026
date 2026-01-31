@@ -12,6 +12,7 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField] GameObject enemiesLayer; //Capa de los enemigos (shadow enemies)
     [SerializeField] GameObject gameManager;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject audioManager;
 
     [Header("Prefabs")]
     [SerializeField] GameObject walkingEnemyPrefab;
@@ -101,7 +102,7 @@ public class EnemiesManager : MonoBehaviour
                 enemy.GetComponent<RushingEnemyManager>().Init(player, gameManager);
             }
             else{
-                enemy.GetComponent<Enemy>().Init(player,gameManager);
+                enemy.GetComponent<Enemy>().Init(player,gameManager,audioManager);
             }
             print("Enemigo generado");
             

@@ -6,7 +6,8 @@ public class RushingEnemy : Enemy
 {
     private Vector2 direction;
     [SerializeField] GameObject rushingEnemyManager;
-    
+    [SerializeField] AudioClip launchClip;
+
     override protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +36,7 @@ public class RushingEnemy : Enemy
     {
         yield return new WaitForSeconds(1.0f);//cambiar el 2f por la duración de la animación
         rb.velocity = direction * speed * Time.deltaTime;
+        this.audioManager.PlayOneShot(launchClip);
     }
 
 

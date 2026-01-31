@@ -87,4 +87,14 @@ abstract public class Enemy : MonoBehaviour
     }
 
     protected abstract void AnimationManager();
+
+    public virtual void TakeDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+            player.GetComponent<PlayerController>().PlayerHealed(10);
+        }
+    }
 }

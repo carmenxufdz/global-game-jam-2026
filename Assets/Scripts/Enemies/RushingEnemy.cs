@@ -55,11 +55,8 @@ public class RushingEnemy : Enemy
 
     override protected void OnBecameInvisible()
     {
-        if(health <= 0)
-        {   
-            if(canAttack)
-                rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
-        }
+        if(canAttack)
+            rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
     }
 
     public void ManagerSet(GameObject manager)
@@ -69,7 +66,6 @@ public class RushingEnemy : Enemy
 
     override protected void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Rushing enemy trigger enter");
         if (collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)
         {
             print("Player hit rushing enemy");
@@ -82,5 +78,15 @@ public class RushingEnemy : Enemy
     protected override void AnimationManager()
     {
         // No animation for rushing enemy
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            player.GetComponent<PlayerController>().PlayerHealed(10);
+            rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
+        }
     }
 }

@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
+                animator.SetBool("jumping", true);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 isGrounded = false;
             }
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
     
         if (collision.gameObject.tag == "Floor")
         {
+            animator.SetBool("jumping", false);
             //Ponemos la variable en true
             isGrounded = true;
         }

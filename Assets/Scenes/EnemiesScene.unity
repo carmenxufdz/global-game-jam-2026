@@ -315,6 +315,8 @@ MonoBehaviour:
   lightWorld: {fileID: 1119919054}
   shadowWorld: {fileID: 2043792690}
   shadowEnemys: {fileID: 1005065423}
+  lightSlider: {fileID: 0}
+  shadowSlider: {fileID: 0}
   mask: 0
   canAct: 1
   player: {fileID: 0}

@@ -14,6 +14,7 @@ public class RushingEnemy : Enemy
         type = EnemyType.Rushing;
         speed = 1000;
         canAttack = true;
+        animator = GetComponent<Animator>();
     }
 
 
@@ -32,7 +33,6 @@ public class RushingEnemy : Enemy
     {
         yield return new WaitForSeconds(1.0f);//cambiar el 2f por la duración de la animación
         rb.velocity = direction * speed * Time.deltaTime;
-        print("shoot");
     }
 
 

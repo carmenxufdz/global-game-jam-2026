@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] int speed; //variable para el valor de la velocidad de movimiento
     [SerializeField] int jumpForce; //variable para el valor de la velocidad de salto
-    [SerializeField] int hopForce; //variable para el valor de la velocidad de rebote
     [SerializeField] bool isGrounded; //variable para comprobar si toca el suelo
     [SerializeField] bool isDead;
     Rigidbody2D rb;                 //referencia a rigidBody2D
@@ -26,15 +25,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        speed = 3;                  
-        jumpForce = 10;      
-        hopForce = jumpForce / 2;
+        speed = 4;                  
+        jumpForce = 12;      
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 3;
 
         capsule = GetComponent<CapsuleCollider2D>();
         maxSanity = 100;
         currentSanity = maxSanity;
-
 
         maskManager= GameObject.FindGameObjectWithTag("GameController").GetComponent<MaskManager>();
 
@@ -112,18 +110,7 @@ public class PlayerController : MonoBehaviour
             //destruye el objeto contra el que colisionas
             Destroy(collision.gameObject);
         }
-        /*
-        //comprueba que colisionas contra un objeto que tiene como tag Enemy
-        if (collision.gameObject.tag == "Enemy")
-        {
-            //destruye contra quien colisionas
-            Destroy(collision.gameObject);
-
-            //da un movimiento hacia arriba, usando la variable FuerzaRebote
-            rb.velocity = new Vector2(rb.velocity.x, hopForce);
-
-        }*/
-
+    
         if (collision.gameObject.tag == "Floor")
         {
             //Ponemos la variable en true

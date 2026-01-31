@@ -179,26 +179,43 @@ public class PlayerController : MonoBehaviour
         currentSanity += health;
     }
 
+    Coroutine sanityCoroutine;
+
     void inShadowWorld()
     {
-        if (maskManager.mask == true)
+        if (maskManager.mask && sanityCoroutine == null)
         {
-            StartCoroutine(looseSanity());
+            sanityCoroutine = StartCoroutine(LoseSanity());
+        }
+        else if (!maskManager.mask && sanityCoroutine != null)
+        {
+            StopCoroutine(sanityCoroutine);
+            sanityCoroutine = null;
+
+            // opcional: reset al quitar la máscara
+            reductionSpeed = 0.1f;
         }
     }
 
     private float reductionSpeed = 0.1f;
     private float reductionAccel = 0.05f;
+    public float maxReductionSpeed = 1.5f;
 
-    IEnumerator looseSanity()
+    IEnumerator LoseSanity()
     {
-        //print("shadow world");
-        yield return new WaitForSeconds(3);
-        //print("pierde sanidad");
+        yield return new WaitForSeconds(3f);
 
-        reductionSpeed += reductionAccel * Time.deltaTime; // cada vez resta más
-        currentSanity -= reductionSpeed * Time.deltaTime;
+        while (maskManager.mask)
+        {
+            reductionSpeed += reductionAccel * Time.deltaTime;
+            reductionSpeed = Mathf.Min(reductionSpeed, maxReductionSpeed);
 
-        currentSanity = Mathf.Max(currentSanity, 0f);
+            currentSanity -= reductionSpeed * Time.deltaTime;
+            currentSanity = Mathf.Max(currentSanity, 0f);
+
+            yield return null;
+        }
+
+        sanityCoroutine = null;
     }
 }

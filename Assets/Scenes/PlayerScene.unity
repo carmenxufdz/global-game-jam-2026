@@ -339,6 +339,7 @@ MonoBehaviour:
   maxSanity: 0
   weapon: {fileID: 2046666196}
   armPivot: {fileID: 2090413880}
+  maxReductionSpeed: 8
 --- !u!1 &448108551
 GameObject:
   m_ObjectHideFlags: 0

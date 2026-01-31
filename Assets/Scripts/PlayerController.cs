@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;                 //referencia a rigidBody2D
 
     Animator animator;
-    public Slider lifeSlider;       //slider de la vida/sanidad del jugador
+    public Slider lightLifeSlider;       //slider de la vida/sanidad del jugador
+    public Slider shadowLifeSlider;       //slider de la vida/sanidad del jugador
 
     public float currentSanity;
     public float maxSanity;
@@ -42,7 +43,8 @@ public class PlayerController : MonoBehaviour
 
         maskManager= GameObject.FindGameObjectWithTag("GameController").GetComponent<MaskManager>();
 
-        lifeSlider.maxValue = maxSanity;
+        lightLifeSlider.maxValue = maxSanity;
+        shadowLifeSlider.maxValue = maxSanity;
         animator = GetComponent<Animator>();
     }
 
@@ -72,7 +74,8 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector2(-1, 1);
             }
 
-            lifeSlider.value = currentSanity;
+            lightLifeSlider.value = currentSanity;
+            shadowLifeSlider.value = currentSanity;
 
             AttackControll();
             inShadowWorld();

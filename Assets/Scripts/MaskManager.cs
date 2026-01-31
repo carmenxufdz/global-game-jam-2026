@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MaskManager : MonoBehaviour
 {
-    public GameObject lightWorld;
-    public GameObject shadowWorld;
-    public GameObject shadowEnemys;
+    [SerializeField] GameObject lightWorld;
+    [SerializeField] GameObject shadowWorld;
+    [SerializeField] GameObject shadowEnemys;
+    [SerializeField] GameObject lightSlider;
+    [SerializeField] GameObject shadowSlider;
 
     public bool mask = false;
     public bool canAct = true;
@@ -48,6 +50,8 @@ public class MaskManager : MonoBehaviour
         // Mundos
         lightWorld.SetActive(!mask);
         shadowWorld.SetActive(mask);
+        lightSlider.SetActive(!mask);
+        shadowSlider.SetActive(mask);
     }
 
 

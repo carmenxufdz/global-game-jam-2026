@@ -4,13 +4,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+
+    //audio
+    [SerializeField] AudioClip select;
+    AudioSource audio;
+
+    void Start()
+    {
+        audio = GameObject.FindGameObjectWithTag("SoundM").GetComponent<AudioSource>(); //awake
+    }
+
     public void StartGame()
-    {   
+    {
+        audio.PlayOneShot(select);
         SceneManager.LoadScene("GameScene");
     }
 
     public void QuitGame()
     {
+        audio.PlayOneShot(select);
         Application.Quit();
     }
 }

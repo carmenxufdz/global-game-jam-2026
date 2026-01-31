@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public Transform armPivot;
     private bool isAttacking=false;
 
+    MaskManager maskManager;
+
     void Start()
     {
         speed = 3;                  
@@ -30,6 +32,9 @@ public class PlayerController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider2D>();
         maxSanity = 100;
         currentSanity = maxSanity;
+
+
+        maskManager= GameObject.FindGameObjectWithTag("GameController").GetComponent<MaskManager>();
     }
 
     void Update()
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
             }
 
             AttackControll();
+            inShadowWorld();
         }
     }
 
@@ -80,8 +86,12 @@ public class PlayerController : MonoBehaviour
 
             //A los 2 segundos reinica la escena
             Invoke("reinicio", 2f);*/
-            //da�a al jugador
+            //daña al jugador
             //si vida es 0 = muerte
+            if(currentSanity<=0)
+            {
+                //ded
+            }
         }
     }
 
@@ -130,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     void AttackControll()
     {
-        //el jugador ataca cuando pulsa el click izquierdo del rat�n
+        //el jugador ataca cuando pulsa el click izquierdo del raton
         if(Input.GetMouseButton(0) && !isAttacking)
         {
             StartCoroutine(PlayerAttack());
@@ -158,5 +168,54 @@ public class PlayerController : MonoBehaviour
         armPivot.localRotation = Quaternion.identity;
         weapon.SetActive(false);
         isAttacking = false;
+    }
+
+    void playerDamaged(float damage)
+    {
+        currentSanity -= damage;
+    }
+    void playerHealed(float health)
+    {
+        currentSanity += health;
+    }
+
+    Coroutine sanityCoroutine;
+
+    void inShadowWorld()
+    {
+        if (maskManager.mask && sanityCoroutine == null)
+        {
+            sanityCoroutine = StartCoroutine(LoseSanity());
+        }
+        else if (!maskManager.mask && sanityCoroutine != null)
+        {
+            StopCoroutine(sanityCoroutine);
+            sanityCoroutine = null;
+
+            // opcional: reset al quitar la máscara
+            reductionSpeed = 0.1f;
+        }
+    }
+
+    private float reductionSpeed = 0.1f;
+    private float reductionAccel = 0.05f;
+    public float maxReductionSpeed = 1.5f;
+
+    IEnumerator LoseSanity()
+    {
+        yield return new WaitForSeconds(3f);
+
+        while (maskManager.mask)
+        {
+            reductionSpeed += reductionAccel * Time.deltaTime;
+            reductionSpeed = Mathf.Min(reductionSpeed, maxReductionSpeed);
+
+            currentSanity -= reductionSpeed * Time.deltaTime;
+            currentSanity = Mathf.Max(currentSanity, 0f);
+
+            yield return null;
+        }
+
+        sanityCoroutine = null;
     }
 }

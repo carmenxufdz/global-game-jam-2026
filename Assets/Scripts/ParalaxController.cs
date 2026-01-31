@@ -6,9 +6,9 @@ public class ParalaxController : MonoBehaviour
 {
     [Header("Objects")]
     public Transform cam;          // Cámara principal
-    public Transform backGround;
-    public Transform midleGround;
-    public Transform foreGround;
+    public Transform background;
+    public Transform midleground;
+    public Transform foreground;
 
     [Header("Parallax velocities")]
     [Range(0f, 1f)] public float backSpeed = 0.2f;
@@ -26,9 +26,9 @@ public class ParalaxController : MonoBehaviour
     {
         Vector3 delta = cam.position - lastCamPosition;
 
-        backGround.position += new Vector3(delta.x * backSpeed, delta.y * backSpeed, 0);
-        midleGround.position += new Vector3(delta.x * midleSpeed, delta.y * midleSpeed, 0);
-        foreGround.position += new Vector3(delta.x * frontSpeed, delta.y * frontSpeed, 0);
+        background.position += new Vector3(delta.x * backSpeed, delta.y * backSpeed, 0);
+        midleground.position += new Vector3(delta.x * midleSpeed, delta.y * midleSpeed, 0);
+        foreground.position += new Vector3(delta.x * frontSpeed, delta.y * frontSpeed, 0);
 
         lastCamPosition = cam.position;
     }

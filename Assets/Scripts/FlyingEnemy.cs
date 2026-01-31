@@ -13,12 +13,12 @@ public class FlyingEnemy : Enemy
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if(distance <= attackRange){
+        if(canAttack){
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            rb.velocity = direction * speed;
+            rb.velocity = direction * speed * Time.deltaTime;
         }
         else{
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(0,0);
         }
     }
 }

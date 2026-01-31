@@ -31,6 +31,16 @@ abstract public class Enemy : MonoBehaviour
         {
             
             Attack();
+
+                    // CAMBIAR DIRECCIÓN SPRITE
+            if (rb.velocity.x > 0)
+            {
+                transform.localScale = new Vector2(1, 1);
+            }
+            else if (rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector2(-1, 1);
+            }
         }
     }
 
@@ -41,8 +51,8 @@ abstract public class Enemy : MonoBehaviour
        canAttack = true; 
     }
 
-    protected virtual void OecameInvisible()
-    {   
+    protected virtual void OnBecameInvisible()
+    {  
         canAttack = false;
     }
 

@@ -26,15 +26,26 @@ public class RushingEnemy : Enemy
     }
 
 
-
     override protected void Attack()
     {
-        if(canAttack){
-            rb.velocity = direction * speed * Time.deltaTime;
+        if (canAttack)
+        {
+            //rb.velocity = direction * speed * Time.deltaTime; //
+            print("te ataco");
+            StartCoroutine(WaitForAnimation());
         }
         else
-            rb.velocity = new Vector2(0,0);
+            rb.velocity = new Vector2(0, 0);
     }
+
+    IEnumerator WaitForAnimation()
+    {
+        print("ready?");
+        yield return new WaitForSeconds(2f);//cambiar el 2f por la duración de la animación
+        rb.velocity = direction * speed * Time.deltaTime;
+        print("shoot");
+    }
+
 
     override protected void OnBecameVisible()
     {
@@ -55,6 +66,17 @@ public class RushingEnemy : Enemy
     {
         rushingEnemyManager = manager;
     }
+
+    override protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("Rushing enemy trigger enter");
+        if (collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)
+        {
+            print("Player hit rushing enemy");
+            hit = true;
+            player.GetComponent<PlayerController>().TakeDamage(damage);
+            rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
+        }
 
     protected override void AnimationManager()
     {

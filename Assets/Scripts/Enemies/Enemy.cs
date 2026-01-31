@@ -66,7 +66,7 @@ abstract public class Enemy : MonoBehaviour
     public EnemyType GetEnemyType() => type;
     public int GetHealth() => health;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         print("Enemy trigger enter");
         if(collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)

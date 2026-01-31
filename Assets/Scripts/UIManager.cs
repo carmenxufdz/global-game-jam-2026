@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public enum UIType {Gameplay, Pause, GameOver}
 public class UIManager : MonoBehaviour
@@ -89,6 +91,7 @@ public class UIManager : MonoBehaviour
 
     public void HomeButton()
     {
+        print("HOome pulsado");
         audio.PlayOneShot(select);
         SceneManager.LoadSceneAsync("MainMenu");
     }

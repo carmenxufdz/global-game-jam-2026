@@ -169,24 +169,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    /*
     IEnumerator Invulnerability()
     {
         isInvulnerable = true;
-
-        float timer = 0f;
-
-        while (timer < invulnerabilityTime)
-        {
-            spriteRenderer.enabled = !spriteRenderer.enabled;
-            yield return new WaitForSeconds(blinkInterval);
-            timer += blinkInterval;
-        }
-
-        spriteRenderer.enabled = true;
+        yield return new WaitForSeconds(blinkInterval);
         isInvulnerable = false;
     }
-    */
+
 
 
 

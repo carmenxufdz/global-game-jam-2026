@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - SoundM
   - Thorn
+  - Boss
   layers:
   - Default
   - TransparentFX

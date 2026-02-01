@@ -22,7 +22,6 @@ public class RushingEnemyManager : MonoBehaviour
         {
             CreateChild();
         }
-
     }
 
     public void CreateChild()

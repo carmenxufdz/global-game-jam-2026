@@ -22,10 +22,14 @@ public class StickAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameManager.GetComponent<MaskManager>().mask){
+        if(gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50){
             if(collision.gameObject.CompareTag("Enemy"))
             {
                 collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            }
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
             }
         }
     }

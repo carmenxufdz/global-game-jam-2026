@@ -23257,7 +23257,7 @@ PrefabInstance:
       objectReference: {fileID: 2125891940}
     - target: {fileID: 1590290493847347564, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 220
+      value: -56
       objectReference: {fileID: 0}
     - target: {fileID: 1590290493847347564, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23924,7 +23924,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -25441,7 +25441,7 @@ GameObject:
   - component: {fileID: 1934337359}
   - component: {fileID: 1934337361}
   - component: {fileID: 1934337362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FinalBrother
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25530,7 +25530,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -27447,7 +27447,6 @@ MonoBehaviour:
   brother: {fileID: 1934337358}
   boss: {fileID: 1357243499}
   newBrotherSprite: {fileID: 21300000, guid: e28266599da1c4741a697045bb2a9124, type: 3}
-  waitAfterBossDeath: 10
 --- !u!1001 &2112271875153378071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27459,6 +27458,10 @@ PrefabInstance:
     - target: {fileID: 997826165546538179, guid: f727241f9885eff44a52d14f3b4cb343, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 997826165546538179, guid: f727241f9885eff44a52d14f3b4cb343, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 997826165546538179, guid: f727241f9885eff44a52d14f3b4cb343, type: 3}
       propertyPath: m_TagString

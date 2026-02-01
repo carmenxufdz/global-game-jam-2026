@@ -121,7 +121,7 @@ public class EnemiesManager : MonoBehaviour
 
             if(type == EnemyType.Rushing)
             {
-                enemy.GetComponent<RushingEnemyManager>().Init(player, gameManager);
+                enemy.GetComponent<RushingEnemyManager>().Init(player, gameManager, audioManager);
             }
             else{
                 enemy.GetComponent<Enemy>().Init(player,gameManager,audioManager);

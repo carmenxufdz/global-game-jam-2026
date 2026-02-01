@@ -12,10 +12,11 @@ public class RushingEnemyManager : MonoBehaviour
 
     [SerializeField] GameObject childPrefab;
     // Start is called before the first frame update
-    public void Init(GameObject player, GameObject gameManager)
+    public void Init(GameObject player, GameObject gameManager, GameObject audioManager)
     {
         this.player = player;
         this.gameManager = gameManager;
+        this.audioManager = audioManager;
 
         if (child == null)
         {

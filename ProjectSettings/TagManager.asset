@@ -11,6 +11,7 @@ TagManager:
   - SoundM
   - Thorn
   - Boss
+  - Mask
   layers:
   - Default
   - TransparentFX

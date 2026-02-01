@@ -135,6 +135,12 @@ public class PlayerController : MonoBehaviour
             if (thornRoutine == null)
                 thornRoutine = StartCoroutine(ThornDamageRoutine());
         }
+        if(collision.CompareTag("Mask"))
+        {
+            Destroy(collision.gameObject);
+            maskManager.gotMask = true;
+            //NotificationManager.Instance.Show("Press E to wear the mask");
+        }
     }
 
 

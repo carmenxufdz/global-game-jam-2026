@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         audio = GameObject.FindGameObjectWithTag("SoundM").GetComponent<AudioSource>(); //awake
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void StartGame()

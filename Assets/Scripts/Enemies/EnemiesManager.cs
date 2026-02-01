@@ -65,7 +65,6 @@ public class EnemiesManager : MonoBehaviour
                 enemiesData.Add(enemy.transform.position,enemy.GetComponent<Enemy>().GetEnemyType());
             else
                 enemiesData.Add(enemy.transform.position,EnemyType.Rushing);
-            print("Enemigo guardado");
         }
     }
 
@@ -74,8 +73,8 @@ public class EnemiesManager : MonoBehaviour
         yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
         for(int i = 0; i < totalEnemies ; i++)
         {
-            Destroy(enemiesLayer.transform.GetChild(i).gameObject);
-            print("Enemigo destruido");
+            if(enemiesLayer.transform.GetChild(i).gameObject != null)
+                Destroy(enemiesLayer.transform.GetChild(i).gameObject);
         }
     }
 
@@ -104,7 +103,6 @@ public class EnemiesManager : MonoBehaviour
             else{
                 enemy.GetComponent<Enemy>().Init(player,gameManager,audioManager);
             }
-            print("Enemigo generado");
             
 
         }

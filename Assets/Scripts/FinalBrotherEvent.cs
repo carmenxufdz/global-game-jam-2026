@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FinalBrotherEvent : MonoBehaviour
@@ -22,11 +23,11 @@ public class FinalBrotherEvent : MonoBehaviour
 
     private IEnumerator BrotherAfterBossRoutine()
     {
-        // 1️⃣ Espera unos segundos
+        // Espera unos segundos
         yield return new WaitForSeconds(waitAfterBossDeath);
         Destroy(boss);
-        
-        // 2️⃣ Cambiar sprite del hermano
+
+        // Cambiar sprite del hermano
         if (brother != null && newBrotherSprite != null)
         {
             SpriteRenderer sr = brother.GetComponent<SpriteRenderer>();
@@ -36,7 +37,7 @@ public class FinalBrotherEvent : MonoBehaviour
             }
         }
 
-        // 3️⃣ Mover hermano a la posición del boss
+        // Mover hermano a la posición del boss
         if (brother != null && boss != null)
         {
             brother.transform.position = boss.transform.position;

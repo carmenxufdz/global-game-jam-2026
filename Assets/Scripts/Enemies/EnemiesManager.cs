@@ -71,7 +71,7 @@ public class EnemiesManager : MonoBehaviour
     private IEnumerator DestroyEnemies()
     {
         yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
-        for(int i = 0; i < totalEnemies ; i++)
+        for(int i = 0; i < enemiesLayer.transform.childCount ; i++)
         {
             if(enemiesLayer.transform.GetChild(i).gameObject != null)
                 Destroy(enemiesLayer.transform.GetChild(i).gameObject);

@@ -9,11 +9,10 @@ public class MaskManager : MonoBehaviour
     [SerializeField] GameObject shadowEnemys;
     [SerializeField] GameObject lightSlider;
     [SerializeField] GameObject shadowSlider;
+    [SerializeField] GameObject player;
 
     public bool mask = false;
     public bool canAct = true;
-
-    public PlayerController player; // referencia al script del jugador
 
     void Start()
     {
@@ -36,7 +35,13 @@ public class MaskManager : MonoBehaviour
 
         // Insertar animaci�n del jugador (si eso...)
 
-        yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
+        if(!mask)
+            player.GetComponent<PlayerController>().GetAnimator().CrossFade("PutOnMask", 1.0f);
+        else
+            player.GetComponent<PlayerController>().GetAnimator().CrossFade("PutOffMask", 1.0f);
+        
+        yield return new WaitForSeconds(1f); // espera X segundos durante la animaci�n
+        
 
         // Cambiamos la m�scara y actualizamos el mundo despu�s del delay
         mask = !mask;

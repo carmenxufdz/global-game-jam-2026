@@ -278,6 +278,8 @@ public class PlayerController : MonoBehaviour
     
     public float GetHealth() => currentSanity;
 
+    public Animator GetAnimator() => animator;
+
     //Para eventos de pararse a ver algo
     public void FreezeForSeconds(float time)
     {

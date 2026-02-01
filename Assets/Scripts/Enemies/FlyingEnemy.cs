@@ -13,7 +13,8 @@ public class FlyingEnemy : Enemy
         type = EnemyType.Flying;
         health = 20;
         speed = 300;
-        damage = 5;
+        damage = 10;
+        playerHealed = 5;
         animator = GetComponent<Animator>();
     }
     override protected void Attack()

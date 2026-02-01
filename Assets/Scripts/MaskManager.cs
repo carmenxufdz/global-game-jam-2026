@@ -11,6 +11,8 @@ public class MaskManager : MonoBehaviour
     [SerializeField] GameObject shadowSlider;
     [SerializeField] GameObject player;
 
+    [SerializeField] GameObject enemiesManager;
+
     public bool gotMask = false;
     public bool mask = false;
     public bool canAct = true;
@@ -52,6 +54,8 @@ public class MaskManager : MonoBehaviour
         // Cambiamos la m�scara y actualizamos el mundo despu�s del delay
         mask = !mask;
         ActualizarMundo();
+        enemiesManager.GetComponent<EnemiesManager>().DestroyEnemies();
+        enemiesManager.GetComponent<EnemiesManager>().GenerateEnemies();
 
         canAct = true; // desbloqueamos acciones
     }

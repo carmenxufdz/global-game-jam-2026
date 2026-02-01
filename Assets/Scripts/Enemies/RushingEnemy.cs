@@ -19,6 +19,7 @@ public class RushingEnemy : Enemy
         canAttack = true;
         health = 10;
         damage = 1;
+        playerHealed = 0;
         animator = GetComponent<Animator>();
     }
 
@@ -51,8 +52,10 @@ public class RushingEnemy : Enemy
 
     override protected void OnBecameVisible()
     {
-       direction = (player.transform.position - transform.position).normalized;
-       canAttack = true; 
+        direction = (player.transform.position - transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+        canAttack = true; 
     }
 
     override protected void OnBecameInvisible()
@@ -87,7 +90,6 @@ public class RushingEnemy : Enemy
         health -= damage;
         if(health <= 0)
         {
-            player.GetComponent<PlayerController>().PlayerHealed(10);
             rushingEnemyManager.GetComponent<RushingEnemyManager>().ResetEnemy();
         }
     }

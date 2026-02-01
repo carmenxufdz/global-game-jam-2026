@@ -15,7 +15,8 @@ public class WalkingEnemy : Enemy
         type = EnemyType.Walking;
         animator = GetComponent<Animator>();
         hit = false;
-        damage = 5;
+        damage = 10;
+        playerHealed = 5;
         speed = 200;
         health = 30;
         

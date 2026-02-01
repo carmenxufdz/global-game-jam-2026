@@ -62,20 +62,6 @@ public class EnemiesManager : MonoBehaviour
 
     void Update()
     {
-        //Si se está cambiando el mundo
-        if (!gameManager.GetComponent<MaskManager>().canAct && !hasRun)
-        {
-            StartCoroutine(DestroyEnemies()); //Eliminamos todos los enemigos
-            
-            StartCoroutine(GenerateEnemies()); //Los generamos de nuevo en sus posiciones originales
-
-            hasRun = true;
-        }
-        // Opcional: resetear si canAct vuelve a true
-        else if (gameManager.GetComponent<MaskManager>().canAct && hasRun)
-        {
-            hasRun = false;
-        }
     }
 
     private void GetEnemiesData()
@@ -91,9 +77,8 @@ public class EnemiesManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DestroyEnemies()
+    public void DestroyEnemies()
     {
-        yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
         for(int i = 0; i < enemiesLayer.transform.childCount ; i++)
         {
             if(enemiesLayer.transform.GetChild(i).gameObject != null)
@@ -101,9 +86,8 @@ public class EnemiesManager : MonoBehaviour
         }
     }
 
-    private IEnumerator GenerateEnemies()
+    public void GenerateEnemies()
     {
-        yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
         foreach(var enemyData in enemiesData)
         {
             Vector2 position = enemyData.Key;

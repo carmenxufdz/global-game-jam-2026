@@ -13,6 +13,8 @@ abstract public class Enemy : MonoBehaviour
     protected int speed;
     protected int health;
     protected int damage;
+
+    protected int playerHealed;
     protected EnemyType type;
 
     protected Animator animator;
@@ -98,7 +100,7 @@ abstract public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            player.GetComponent<PlayerController>().PlayerHealed(10);
+            player.GetComponent<PlayerController>().PlayerHealed(playerHealed);
         }
     }
 }

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
     public Transform armPivot;
     private bool isAttacking=false;
+    private bool isInEvent = false ;
 
     MaskManager maskManager;
 
@@ -64,9 +65,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        if (!isDead)
-        {
+    {   
+        if (!isDead && !isInEvent)
+        {   
             //usando el rigidbody, le damos velocidad en  un vector2 usando el valor que nos devuelve el eje horizontal---
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
 
@@ -108,6 +109,11 @@ public class PlayerController : MonoBehaviour
                 audio.Stop();
                 animator.SetBool("walking", false);
             }
+        }else{
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                animator.SetBool("walking", false);
+                audio.Stop();
+                return;
         }
     }
 
@@ -256,6 +262,23 @@ public class PlayerController : MonoBehaviour
 
         sanityCoroutine = null;
     }
+<<<<<<< Updated upstream
     
     public float GetHealth() => currentSanity;
+=======
+
+    //Para eventos de pararse a ver algo
+    public void FreezeForSeconds(float time)
+    {
+        StartCoroutine(FreezeRoutine(time));
+    }
+
+    IEnumerator FreezeRoutine(float time)
+    {
+        isInEvent = true;
+        yield return new WaitForSeconds(time);
+        isInEvent = false;
+    }
+
+>>>>>>> Stashed changes
 }

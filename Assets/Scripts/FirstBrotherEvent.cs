@@ -9,6 +9,15 @@ public class FirstBrotherEvent : MonoBehaviour
     [SerializeField] Vector2 npcWalkDirection = Vector2.right;
     [SerializeField] float npcWalkDuration = 3f; // segundos que camina antes de destruirse
 
+    
+    AudioSource audioManager;
+    [SerializeField] AudioClip meetingClip;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("SoundM").GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -21,6 +30,8 @@ public class FirstBrotherEvent : MonoBehaviour
 
             if (brotherNPC != null)
             {
+
+                audioManager.PlayOneShot(meetingClip);
                 StartCoroutine(NPCEventRoutine(brotherNPC));
             }
 

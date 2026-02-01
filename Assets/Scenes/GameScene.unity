@@ -27362,6 +27362,8 @@ MonoBehaviour:
   player: {fileID: 1093536962}
   mask: 0
   canAct: 1
+  audioManager: {fileID: 0}
+  switchWorldClip: {fileID: 8300000, guid: a323588a3d33f274a9ec8c0d5c25c182, type: 3}
 --- !u!4 &2125891942
 Transform:
   m_ObjectHideFlags: 0

@@ -14,10 +14,14 @@ public class MaskManager : MonoBehaviour
     public bool mask = false;
     public bool canAct = true;
 
+    public AudioSource audioManager;
+    [SerializeField] AudioClip switchWorldClip;
+
     void Start()
     {
         mask = false;
         ActualizarMundo();
+        audioManager = GameObject.FindGameObjectWithTag("SoundM").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,8 +38,9 @@ public class MaskManager : MonoBehaviour
         canAct = false; // bloqueamos acciones mientras dura el "cambio"
 
         // Insertar animaci�n del jugador (si eso...)
+        audioManager.PlayOneShot(switchWorldClip);
 
-        if(!mask)
+        if (!mask)
             player.GetComponent<PlayerController>().GetAnimator().CrossFade("PutOnMask", 1.0f);
         else
             player.GetComponent<PlayerController>().GetAnimator().CrossFade("PutOffMask", 1.0f);

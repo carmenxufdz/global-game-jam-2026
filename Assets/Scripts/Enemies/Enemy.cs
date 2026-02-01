@@ -23,7 +23,6 @@ abstract public class Enemy : MonoBehaviour
     protected bool hit = false;
 
     //audio
-    AudioSource audio;
     public AudioSource audioManager;
     [SerializeField] AudioClip deathClip;
     [SerializeField] public AudioClip attackClip;

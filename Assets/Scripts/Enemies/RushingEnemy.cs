@@ -15,7 +15,7 @@ public class RushingEnemy : Enemy
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         type = EnemyType.Rushing;
-        speed = 1000;
+        speed = 8;
         canAttack = true;
         health = 10;
         damage = 1;
@@ -41,7 +41,7 @@ public class RushingEnemy : Enemy
     IEnumerator WaitForAnimation()
     {
         yield return new WaitForSeconds(1.0f);//cambiar el 2f por la duración de la animación
-        rb.velocity = direction * speed * Time.deltaTime;
+        rb.velocity = direction * speed;
         if (!attackSoundPlayed)
         {
             audioManager.PlayOneShot(launchClip);
@@ -71,7 +71,7 @@ public class RushingEnemy : Enemy
 
     override protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50)
+        if (collision.gameObject.CompareTag("Player") && (gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50))
         {
             print("Player hit rushing enemy");
             hit = true;

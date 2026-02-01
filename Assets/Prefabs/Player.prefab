@@ -373,9 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979973050522ecc4b942f7908f466482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpForce: 0
-  isDead: 0
   uiManager: {fileID: 0}
   groundCheck: {fileID: 7712545026531757966}
   groundLayer:
@@ -387,9 +384,8 @@ MonoBehaviour:
   maxSanity: 0
   weapon: {fileID: 3910496357976798206}
   armPivot: {fileID: 5051886007589436454}
-  invulnerabilityTime: 2
-  blinkInterval: 0.1
-  jumpClip: {fileID: 8300000, guid: 2238a24d77cde9b4aba3773939c1d329, type: 3}
+  thornDamageInterval: 1
+  jumpClip: {fileID: 8300000, guid: f4395d98e824dea4eb8b92b5d846586f, type: 3}
   walkClip: {fileID: 8300000, guid: f83649fcf504c4a4095d6bd35dcca60e, type: 3}
   attackClip: {fileID: 8300000, guid: 455dbb0bd6a63624d9695e67ed865cab, type: 3}
   hurtClip: {fileID: 8300000, guid: f1209f71257a675488a60f35d51f428d, type: 3}

@@ -12,7 +12,7 @@ public class FlyingEnemy : Enemy
         rb.gravityScale = 0;
         type = EnemyType.Flying;
         health = 20;
-        speed = 250;
+        speed = 4;
         damage = 10;
         playerHealed = 5;
         animator = GetComponent<Animator>();
@@ -23,7 +23,7 @@ public class FlyingEnemy : Enemy
 
         if(canAttack){
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            rb.velocity = direction * speed * Time.deltaTime;
+            rb.velocity = direction * speed;
             if (!attackSoundPlayed)
             {
                 audioManager.PlayOneShot(attackClip);

@@ -9,9 +9,10 @@ public class PreFinalBoss : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
+        {   
             maskManager.mask = true;
             maskManager.ActualizarMundo();   
+            maskManager.canUse = false;
         }
     }
 }

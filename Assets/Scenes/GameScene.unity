@@ -1898,46 +1898,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 195, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 196, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 197, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 198, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 199, y: -3, z: 0}
     second:
       serializedVersion: 2
@@ -2021,8 +1981,38 @@ Tilemap:
   - first: {x: 207, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 208, y: -3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 209, y: -3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 210, y: -3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2274,7 +2264,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 143669f3ceb5b5641b6fa24d5f2ec719, type: 2}
   - m_RefCount: 126
     m_Data: {fileID: 11400000, guid: 40c374c8645ece047bc7c2b9038a8749, type: 2}
-  - m_RefCount: 18
+  - m_RefCount: 17
     m_Data: {fileID: 11400000, guid: 5afc525b4e5390744b4cbc0c58635703, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -2287,7 +2277,7 @@ Tilemap:
     m_Data: {fileID: 2056598154, guid: 1fb1ee790724a1349b31280ee375f548, type: 3}
   - m_RefCount: 126
     m_Data: {fileID: -1547188305, guid: 1fb1ee790724a1349b31280ee375f548, type: 3}
-  - m_RefCount: 18
+  - m_RefCount: 17
     m_Data: {fileID: -1707340963, guid: 1fb1ee790724a1349b31280ee375f548, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -2296,7 +2286,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 161
+  - m_RefCount: 160
     m_Data:
       e00: 1
       e01: 0
@@ -2315,7 +2305,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 161
+  - m_RefCount: 160
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -24252,102 +24242,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1590290493847347564, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
   m_PrefabInstance: {fileID: 1158277930}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1093536975
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093536962}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1094127718
 GameObject:
   m_ObjectHideFlags: 0
@@ -24630,25 +24524,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
-      propertyPath: hurtClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f1209f71257a675488a60f35d51f428d, type: 3}
-    - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
-      propertyPath: jumpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2238a24d77cde9b4aba3773939c1d329, type: 3}
-    - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
-      propertyPath: walkClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f83649fcf504c4a4095d6bd35dcca60e, type: 3}
-    - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 2125891940}
-    - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
-      propertyPath: attackClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 455dbb0bd6a63624d9695e67ed865cab, type: 3}
     - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: lightLifeSlider
       value: 
@@ -24660,10 +24538,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7915279777367529311, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1093536975}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
 --- !u!1 &1161069908
 GameObject:
@@ -28409,7 +28284,7 @@ PrefabInstance:
       objectReference: {fileID: 447185797}
     - target: {fileID: 1871847426342460645, guid: 4ca1afa0620ac5742bd00473db358c12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.3244
+      value: 74.12
       objectReference: {fileID: 0}
     - target: {fileID: 1871847426342460645, guid: 4ca1afa0620ac5742bd00473db358c12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28569,6 +28444,7 @@ MonoBehaviour:
   gotMask: 0
   mask: 0
   canAct: 1
+  canUse: 1
   audioManager: {fileID: 0}
   switchWorldClip: {fileID: 8300000, guid: a323588a3d33f274a9ec8c0d5c25c182, type: 3}
 --- !u!4 &2125891942

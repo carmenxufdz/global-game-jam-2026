@@ -16,6 +16,7 @@ public class MaskManager : MonoBehaviour
     public bool gotMask = false;
     public bool mask = false;
     public bool canAct = true;
+    public bool canUse = true;
 
     public AudioSource audioManager;
     [SerializeField] AudioClip switchWorldClip;
@@ -30,7 +31,7 @@ public class MaskManager : MonoBehaviour
     void Update()
     {
         // Pulsar E para cambiar de estado
-        if (Input.GetKeyDown(KeyCode.E) && canAct && gotMask)
+        if (Input.GetKeyDown(KeyCode.E) && canAct && gotMask && canUse)
         {
             StartCoroutine(CambiarMundo());
         }

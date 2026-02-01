@@ -44,7 +44,7 @@ public class RushingEnemy : Enemy
         rb.velocity = direction * speed;
         if (!attackSoundPlayed)
         {
-            audioManager.PlayOneShot(launchClip);
+            //audioManager.PlayOneShot(launchClip);
             attackSoundPlayed = true;
         }
     }

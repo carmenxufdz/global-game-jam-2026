@@ -23437,7 +23437,7 @@ PrefabInstance:
     - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: hurtClip
       value: 
-      objectReference: {fileID: 8300000, guid: f1209f71257a675488a60f35d51f428d, type: 3}
+      objectReference: {fileID: 8300000, guid: 35123c3d5a9d97743ad6b285b70a785d, type: 3}
     - target: {fileID: 9152211289341793479, guid: 4a753cc70e0faf54f936dee58e60ed41, type: 3}
       propertyPath: jumpClip
       value: 

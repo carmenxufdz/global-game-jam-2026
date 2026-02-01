@@ -233,6 +233,7 @@ public class PlayerController : MonoBehaviour
             return; // no recibe daño
 
         currentSanity -= damage;
+        audioManager.PlayOneShot(hurtClip);
 
         if (currentSanity <= 0)
         {

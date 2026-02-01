@@ -23,10 +23,6 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth <= 0)
-        {
-            animator.SetBool("Dead",true);
-        }
     }
 
     public int GetCurrentHealth() => currentHealth;

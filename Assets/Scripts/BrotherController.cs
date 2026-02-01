@@ -12,6 +12,7 @@ public class BrotherController : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
     }
 
     void Update()

@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class FinalBrotherEvent : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] MaskManager maskManager;
     [SerializeField] GameObject brother; 
     [SerializeField] GameObject boss;  
     [SerializeField] Sprite newBrotherSprite; 
-    private float bossDeathTime = 2; 
-    private float brotherSpawningTime = 1;
+    private float bossDeathTime = 1.7f; 
     private float quittingTime = 5;
     private Vector2 bossPosition;
 
@@ -29,14 +29,19 @@ public class FinalBrotherEvent : MonoBehaviour
     {
         // Espera unos segundos
         yield return new WaitForSeconds(bossDeathTime);
+        if(maskManager!= null)
+        {   
+            maskManager.mask = false;
+            maskManager.ActualizarMundo();
+        }
+
         bossPosition = boss.transform.position;
         Destroy(boss);
 
         brother.SetActive(false);
-        yield return new WaitForSeconds(brotherSpawningTime);
         if (brother != null)
         {
-            brother.transform.position = bossPosition;
+            brother.transform.position = new Vector2(bossPosition.x,-2.5f);
         }
         if (brother != null && newBrotherSprite != null)
         {
@@ -49,6 +54,6 @@ public class FinalBrotherEvent : MonoBehaviour
         brother.SetActive(true);
 
         yield return new WaitForSeconds(quittingTime);
-        SceneManager.LoadSceneAsync("MainMenu");
+        SceneManager.LoadSceneAsync("GameFinishScene");
     }
 }

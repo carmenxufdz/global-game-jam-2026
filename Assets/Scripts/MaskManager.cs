@@ -60,7 +60,7 @@ public class MaskManager : MonoBehaviour
         canAct = true; // desbloqueamos acciones
     }
 
-    void ActualizarMundo()
+    public void ActualizarMundo()
     {
         // Mundos
         lightWorld.SetActive(!mask);

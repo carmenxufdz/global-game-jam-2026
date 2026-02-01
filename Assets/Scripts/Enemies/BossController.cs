@@ -16,7 +16,7 @@ public class BossController : MonoBehaviour
     {   
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        maxHealth = 100;
+        maxHealth = 1;
         currentHealth = maxHealth;
     }
 

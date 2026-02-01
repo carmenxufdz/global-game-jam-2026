@@ -8,9 +8,15 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] int speed; //variable para el valor de la velocidad de movimiento
     [SerializeField] int jumpForce; //variable para el valor de la velocidad de salto
-    [SerializeField] bool isGrounded; //variable para comprobar si toca el suelo
-    [SerializeField] bool isDead;
+    bool isDead;
+    bool onGround;
     [SerializeField] GameObject uiManager;
+
+    [SerializeField] private Transform groundCheck;
+
+    private float groundCheckDistance = 0.5f;
+    [SerializeField] private LayerMask groundLayer;
+
     Rigidbody2D rb;                 //referencia a rigidBody2D
 
     Animator animator;
@@ -71,12 +77,10 @@ public class PlayerController : MonoBehaviour
             //usando el rigidbody, le damos velocidad en  un vector2 usando el valor que nos devuelve el eje horizontal---
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
 
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (Input.GetKeyDown(KeyCode.Space) && onGround)
             {
-                animator.SetBool("jumping", true);
                 audioManager.PlayOneShot(jumpClip);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                isGrounded = false;
             }
 
             //comprueba que nuestra velocidad en x sea mayor de cero, por lo que se mueve a la derecha
@@ -98,7 +102,7 @@ public class PlayerController : MonoBehaviour
             AttackControll();
             inShadowWorld();
 
-            if(rb.velocity.x != 0 && isGrounded)
+            if(rb.velocity.x != 0 && onGround)
             {
                 if (!audio.isPlaying)
                     audio.Play();
@@ -120,22 +124,6 @@ public class PlayerController : MonoBehaviour
     //este m�todo controla colisiones NO SOLIDAS (trigger)
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //comprueba que tocas un objeto del nombre item
-        if (collision.gameObject.tag == "Item")
-        {
-            print("has tocado el item");
-
-            //destruye el objeto contra el que colisionas
-            Destroy(collision.gameObject);
-        }
-    
-        if (collision.gameObject.tag == "Floor")
-        {
-            animator.SetBool("jumping", false);
-            //Ponemos la variable en true
-            isGrounded = true;
-        }
-
         if(collision.gameObject.tag == "Thorn")
         {
             currentSanity = 0;
@@ -143,12 +131,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    void CheckGround()
     {
-        if (collision.gameObject.tag == "Floor")
-        {
-            isGrounded = false;
-        }
+        // Lanzamos el raycast
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+
+        onGround = hit.collider != null;
+
+        animator.SetBool("jumping", !onGround);
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (groundCheck == null) return;
+
+        // Lanzamos un raycast visual para mostrar hasta dónde llega
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+
+        Vector3 start = groundCheck.position;
+        Vector3 end = hit.collider != null ? (Vector3)hit.point : groundCheck.position + Vector3.down * groundCheckDistance;
+
+        // Color según si impacta o no
+        Gizmos.color = hit.collider != null ? Color.green : Color.red;
+
+        // Línea del raycast
+        Gizmos.DrawLine(start, end);
+
+        // Pequeño punto en el final del raycast
+        Gizmos.DrawSphere(end, 0.05f);
     }
 
     void Reset()

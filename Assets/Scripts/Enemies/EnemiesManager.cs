@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemiesManager : MonoBehaviour
 {
@@ -25,8 +26,25 @@ public class EnemiesManager : MonoBehaviour
 
     private bool hasRun = false;
 
-    void Start()
-    {   
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        audioManager = SoundManager.Instance?.gameObject;
+
+        if(audioManager == null)
+        {
+            Debug.LogError("SoundManager no encontrado!");
+            return;
+        }
+
         enemiesPrefabs = new Dictionary<EnemyType, GameObject>
         {
             {EnemyType.Walking, walkingEnemyPrefab},
@@ -34,7 +52,12 @@ public class EnemiesManager : MonoBehaviour
             {EnemyType.Rushing, rushingEnemyManagerPrefab}
         };
 
-        GetEnemiesData(); //Guardamos posicio y tipo de cada enemigo para generarlos después
+        // Ahora ya puedes inicializar enemigos
+        enemiesData.Clear();
+        GetEnemiesData();
+    }
+    void Start()
+    {   
     }
 
     void Update()

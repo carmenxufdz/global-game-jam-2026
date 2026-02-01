@@ -32,7 +32,7 @@ abstract public class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         // ActualizarSprite();
-        if(gameManager.GetComponent<MaskManager>().mask)
+        if(gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50)
         {
             Attack();
             //audioManager.PlayOneShot(attackClip);
@@ -75,10 +75,8 @@ abstract public class Enemy : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Enemy trigger enter");
-        if(collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)
+        if(collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50)
         {
-            print("Player hit enemy");
             hit = true;
             player.GetComponent<PlayerController>().TakeDamage(damage);
         }
@@ -97,6 +95,7 @@ abstract public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        print("au");
         health -= damage;
         audioManager.PlayOneShot(deathClip);
         if (health <= 0)

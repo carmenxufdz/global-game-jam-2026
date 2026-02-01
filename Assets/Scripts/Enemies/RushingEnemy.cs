@@ -59,7 +59,7 @@ public class RushingEnemy : Enemy
 
     override protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask)
+        if (collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50)
         {
             print("Player hit rushing enemy");
             hit = true;
@@ -70,7 +70,7 @@ public class RushingEnemy : Enemy
 
     protected override void AnimationManager()
     {
-        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask);
+        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50);
     }
 
     public override void TakeDamage(int damage)

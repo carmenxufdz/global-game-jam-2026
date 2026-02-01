@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalBrotherEvent : MonoBehaviour
 {
@@ -7,7 +9,9 @@ public class FinalBrotherEvent : MonoBehaviour
     [SerializeField] GameObject brother; 
     [SerializeField] GameObject boss;  
     [SerializeField] Sprite newBrotherSprite; 
-    [SerializeField] float waitAfterBossDeath; 
+    private float bossDeathTime = 2; 
+    private float brotherSpawningTime = 1;
+    private float quittingTime = 5;
 
     private bool eventTriggered = false;
 
@@ -22,11 +26,12 @@ public class FinalBrotherEvent : MonoBehaviour
 
     private IEnumerator BrotherAfterBossRoutine()
     {
-        // 1️⃣ Espera unos segundos
-        yield return new WaitForSeconds(waitAfterBossDeath);
+        // Espera unos segundos
+        yield return new WaitForSeconds(bossDeathTime);
         Destroy(boss);
-        
-        // 2️⃣ Cambiar sprite del hermano
+
+        yield return new WaitForSeconds(brotherSpawningTime);
+        // Cambiar sprite del hermano
         if (brother != null && newBrotherSprite != null)
         {
             SpriteRenderer sr = brother.GetComponent<SpriteRenderer>();
@@ -36,10 +41,13 @@ public class FinalBrotherEvent : MonoBehaviour
             }
         }
 
-        // 3️⃣ Mover hermano a la posición del boss
+        // Mover hermano a la posición del boss
         if (brother != null && boss != null)
         {
             brother.transform.position = boss.transform.position;
         }
+
+        yield return new WaitForSeconds(quittingTime);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }

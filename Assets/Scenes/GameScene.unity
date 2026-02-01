@@ -23578,7 +23578,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1264885193}
-  - component: {fileID: 1264885192}
   - component: {fileID: 1264885191}
   m_Layer: 0
   m_Name: NotifyManager
@@ -23601,20 +23600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notificationText: {fileID: 1068080287}
   defaultDuration: 3
---- !u!114 &1264885192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264885190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf6ca34179bc8f4481e4c95589100af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notificationText: {fileID: 0}
-  defaultDuration: 2
 --- !u!4 &1264885193
 Transform:
   m_ObjectHideFlags: 0

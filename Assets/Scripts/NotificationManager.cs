@@ -5,7 +5,7 @@ using TMPro;
 
 public class NotificationManager : MonoBehaviour
 {
-public static NotificationManager Instance;
+    public static NotificationManager Instance;
 
     [SerializeField] private TMP_Text notificationText;
     [SerializeField] private float defaultDuration = 2f;
@@ -14,6 +14,7 @@ public static NotificationManager Instance;
 
     private void Awake()
     {
+        print("Notify");
         // Singleton clásico
         if (Instance != null && Instance != this)
         {
@@ -23,8 +24,8 @@ public static NotificationManager Instance;
 
         Instance = this;
         // Opcional: mantener entre escenas
-        // DontDestroyOnLoad(gameObject);
-
+        DontDestroyOnLoad(gameObject);
+        notificationText = GameObject.FindGameObjectWithTag("Text").GetComponent<TMP_Text>();
         notificationText.gameObject.SetActive(false);
     }
 

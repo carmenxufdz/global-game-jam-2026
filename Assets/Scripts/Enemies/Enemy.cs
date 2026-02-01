@@ -75,7 +75,7 @@ abstract public class Enemy : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") && gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50)
+        if(collision.gameObject.CompareTag("Player") && (gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50))
         {
             hit = true;
             player.GetComponent<PlayerController>().TakeDamage(damage);

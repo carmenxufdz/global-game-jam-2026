@@ -17,7 +17,7 @@ public class WalkingEnemy : Enemy
         hit = false;
         damage = 10;
         playerHealed = 5;
-        speed = 200;
+        speed = 3;
         health = 30;
         
     }
@@ -27,7 +27,7 @@ public class WalkingEnemy : Enemy
             Vector2 direction = player.transform.position - transform.position;
             direction = direction.normalized;
 
-            rb.velocity = new Vector2( direction.x * speed * Time.deltaTime, 0f);
+            rb.velocity = new Vector2( direction.x * speed, 0f);
             if (!attackSoundPlayed)
             {
                 audioManager.PlayOneShot(attackClip);

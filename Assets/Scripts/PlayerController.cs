@@ -262,10 +262,8 @@ public class PlayerController : MonoBehaviour
 
         sanityCoroutine = null;
     }
-<<<<<<< Updated upstream
     
     public float GetHealth() => currentSanity;
-=======
 
     //Para eventos de pararse a ver algo
     public void FreezeForSeconds(float time)
@@ -280,5 +278,4 @@ public class PlayerController : MonoBehaviour
         isInEvent = false;
     }
 
->>>>>>> Stashed changes
 }

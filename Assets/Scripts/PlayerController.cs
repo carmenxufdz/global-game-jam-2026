@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     private int speed;
     private int baseSpeed = 4;
-    [SerializeField] int jumpForce; //variable para el valor de la velocidad de salto
+    private int jumpForce; 
+    private int baseJumpForce = 12;
     bool isDead;
     bool onGround;
     [SerializeField] GameObject uiManager;
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         speed = baseSpeed;                  
-        jumpForce = 12;      
+        jumpForce = baseJumpForce;      
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 3;
 
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Thorn"))
         {
             speed = baseSpeed / 2;
+            jumpForce = baseJumpForce / 2;
 
             if (thornRoutine == null)
                 thornRoutine = StartCoroutine(ThornDamageRoutine());
@@ -149,6 +151,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Thorn"))
         {
             speed = baseSpeed;
+            jumpForce = baseJumpForce;
 
             if (thornRoutine != null)
             {

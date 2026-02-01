@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float thornDamageInterval = 1f;
     Coroutine thornRoutine;
 
-    private float invulnerabilityTime = 2f;
+    private float invulnerabilityTime = 1.5f;
     private float thornDamage = 15;
 
     bool isInvulnerable = false;

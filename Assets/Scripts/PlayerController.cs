@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] int speed; //variable para el valor de la velocidad de movimiento
+    private int speed;
+    private int baseSpeed = 4;
     [SerializeField] int jumpForce; //variable para el valor de la velocidad de salto
     bool isDead;
     bool onGround;
@@ -32,10 +33,8 @@ public class PlayerController : MonoBehaviour
     private bool isInEvent = false ;
 
     MaskManager maskManager;
-
-    //invulnerability
-    public float invulnerabilityTime = 2f;
-    public float blinkInterval = 0.1f;
+    private float invulnerabilityTime = 2f;
+    private float thornDamage = 15;
 
     bool isInvulnerable = false;
 
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        speed = 4;                  
+        speed = baseSpeed;                  
         jumpForce = 12;      
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 3;
@@ -123,15 +122,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //este m�todo controla colisiones NO SOLIDAS (trigger)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Thorn")
         {
-            currentSanity = 0;
-            isDead = true;
+            speed /= 2;
+            TakeDamage(thornDamage);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+{
+    if (collision.CompareTag("Thorn"))
+    {
+        speed = baseSpeed;
+    }
+}
 
     void CheckGround()
     {
@@ -211,23 +217,17 @@ public class PlayerController : MonoBehaviour
 
         if (currentSanity <= 0)
         {
-            // muerte
             return;
         }
-
         StartCoroutine(Invulnerability());
-
     }
 
     IEnumerator Invulnerability()
     {
         isInvulnerable = true;
-        yield return new WaitForSeconds(blinkInterval);
+        yield return new WaitForSeconds(invulnerabilityTime);
         isInvulnerable = false;
     }
-
-
-
 
     public void PlayerHealed(float health)
     {

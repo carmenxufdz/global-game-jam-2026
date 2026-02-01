@@ -12,6 +12,7 @@ public class FinalBrotherEvent : MonoBehaviour
     private float bossDeathTime = 2; 
     private float brotherSpawningTime = 1;
     private float quittingTime = 5;
+    private Vector2 bossPosition;
 
     private bool eventTriggered = false;
 
@@ -28,10 +29,15 @@ public class FinalBrotherEvent : MonoBehaviour
     {
         // Espera unos segundos
         yield return new WaitForSeconds(bossDeathTime);
+        bossPosition = boss.transform.position;
         Destroy(boss);
 
+        brother.SetActive(false);
         yield return new WaitForSeconds(brotherSpawningTime);
-        // Cambiar sprite del hermano
+        if (brother != null)
+        {
+            brother.transform.position = bossPosition;
+        }
         if (brother != null && newBrotherSprite != null)
         {
             SpriteRenderer sr = brother.GetComponent<SpriteRenderer>();
@@ -40,12 +46,7 @@ public class FinalBrotherEvent : MonoBehaviour
                 sr.sprite = newBrotherSprite;
             }
         }
-
-        // Mover hermano a la posición del boss
-        if (brother != null && boss != null)
-        {
-            brother.transform.position = boss.transform.position;
-        }
+        brother.SetActive(true);
 
         yield return new WaitForSeconds(quittingTime);
         SceneManager.LoadSceneAsync("MainMenu");

@@ -1,20 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NotificationManager : MonoBehaviour
 {
     public static NotificationManager Instance;
 
-    [SerializeField] private TMP_Text notificationText;
     [SerializeField] private float defaultDuration = 2f;
 
+    private TMP_Text notificationText;
     private Coroutine currentCoroutine;
 
     private void Awake()
     {
-        print("Notify");
         // Singleton clásico
         if (Instance != null && Instance != this)
         {
@@ -23,17 +22,38 @@ public class NotificationManager : MonoBehaviour
         }
 
         Instance = this;
-        // Opcional: mantener entre escenas
         DontDestroyOnLoad(gameObject);
-        notificationText = GameObject.FindGameObjectWithTag("Text").GetComponent<TMP_Text>();
-        notificationText.gameObject.SetActive(false);
+
+        // Suscribirse a cambios de escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Buscar el TMP_Text en la nueva escena
+        GameObject textGO = GameObject.FindGameObjectWithTag("Text");
+        if (textGO != null)
+        {
+            notificationText = textGO.GetComponent<TMP_Text>();
+            notificationText.gameObject.SetActive(false);
+        }
+        else
+        {
+            notificationText = null;
+        }
     }
 
     public void Show(string message, float duration = -1f)
     {
-        if (duration <= 0)
-            duration = defaultDuration;
+        if (notificationText == null)
+        {
+            Debug.LogWarning("NotificationManager: No hay TextMeshProUGUI en la escena actual.");
+            return;
+        }
 
+        if (duration < 0) duration = defaultDuration;
+
+        // Si ya hay una notificación mostrando, detenerla
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
 
@@ -42,12 +62,21 @@ public class NotificationManager : MonoBehaviour
 
     private IEnumerator ShowRoutine(string message, float duration)
     {
+        if (notificationText == null) yield break;
+
         notificationText.text = message;
         notificationText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(duration);
 
-        notificationText.gameObject.SetActive(false);
+        if (notificationText != null)
+            notificationText.gameObject.SetActive(false);
+
         currentCoroutine = null;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

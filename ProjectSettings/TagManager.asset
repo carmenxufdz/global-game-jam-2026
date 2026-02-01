@@ -12,6 +12,7 @@ TagManager:
   - Thorn
   - Boss
   - Mask
+  - Text
   layers:
   - Default
   - TransparentFX

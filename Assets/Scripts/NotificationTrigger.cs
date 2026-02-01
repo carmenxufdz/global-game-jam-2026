@@ -4,13 +4,13 @@ public class NotificationTrigger : MonoBehaviour
 {
     [TextArea]
     public string message;
+    public float duration;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("hila");
         if (other.CompareTag("Player"))
         {
-            NotificationManager.Instance.Show(message);
+            NotificationManager.Instance.Show(message, duration);
         }
     }
 }

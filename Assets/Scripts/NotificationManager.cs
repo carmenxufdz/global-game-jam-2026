@@ -43,7 +43,7 @@ public class NotificationManager : MonoBehaviour
         }
     }
 
-    public void Show(string message, float duration = -1f)
+    public void Show(string message, float duration = -1.0f)
     {
         if (notificationText == null)
         {

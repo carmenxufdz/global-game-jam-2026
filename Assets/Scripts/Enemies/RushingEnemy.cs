@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RushingEnemy : Enemy
 {
+    bool attackSoundPlayed;
+
     private Vector2 direction;
     [SerializeField] GameObject rushingEnemyManager;
     [SerializeField] AudioClip launchClip;
@@ -29,14 +31,21 @@ public class RushingEnemy : Enemy
             StartCoroutine(WaitForAnimation());
         }
         else
+        {
             rb.velocity = new Vector2(0, 0);
+            attackSoundPlayed = false;
+        }
     }
 
     IEnumerator WaitForAnimation()
     {
         yield return new WaitForSeconds(1.0f);//cambiar el 2f por la duración de la animación
         rb.velocity = direction * speed * Time.deltaTime;
-        this.audioManager.PlayOneShot(launchClip);
+        if (!attackSoundPlayed)
+        {
+            audioManager.PlayOneShot(launchClip);
+            attackSoundPlayed = true;
+        }
     }
 
 

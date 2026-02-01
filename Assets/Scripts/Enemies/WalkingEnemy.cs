@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WalkingEnemy : Enemy
 {
+    bool attackSoundPlayed;
+
     [SerializeField] private Transform groundCheck;
     private float groundCheckDistance = 0.5f;
     [SerializeField] private LayerMask groundLayer;
@@ -25,10 +27,15 @@ public class WalkingEnemy : Enemy
             direction = direction.normalized;
 
             rb.velocity = new Vector2( direction.x * speed * Time.deltaTime, 0f);
-            this.audioManager.PlayOneShot(this.attackClip);
+            if (!attackSoundPlayed)
+            {
+                audioManager.PlayOneShot(attackClip);
+                attackSoundPlayed = true;
+            }
         }
         else{
             rb.velocity = new Vector2(0,0);
+            attackSoundPlayed = false;
         }
     }
 

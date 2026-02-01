@@ -5,8 +5,8 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
 
-    int maxHealth;
-    int currentHealth;
+    [SerializeField] int maxHealth;
+    [SerializeField] int currentHealth;
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class BossController : MonoBehaviour
         
     }
 
+    public int GetCurrentHealth() => currentHealth;
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

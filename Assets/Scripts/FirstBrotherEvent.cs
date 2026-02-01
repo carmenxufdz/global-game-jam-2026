@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EventZone : MonoBehaviour
+public class FirstBrotherEvent : MonoBehaviour
 {
     [SerializeField] float playerFreezeTime = 6f;
     [SerializeField] BrotherController brotherNPC; // puede estar vacío

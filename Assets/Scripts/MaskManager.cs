@@ -11,6 +11,7 @@ public class MaskManager : MonoBehaviour
     [SerializeField] GameObject shadowSlider;
     [SerializeField] GameObject player;
 
+    public bool gotMask = false;
     public bool mask = false;
     public bool canAct = true;
 
@@ -27,7 +28,7 @@ public class MaskManager : MonoBehaviour
     void Update()
     {
         // Pulsar E para cambiar de estado
-        if (Input.GetKeyDown(KeyCode.E) && canAct)
+        if (Input.GetKeyDown(KeyCode.E) && canAct && gotMask)
         {
             StartCoroutine(CambiarMundo());
         }

@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     private bool isInEvent = false ;
 
     MaskManager maskManager;
+
+    [SerializeField] float thornDamageInterval = 1f;
+    Coroutine thornRoutine;
+
     private float invulnerabilityTime = 2f;
     private float thornDamage = 15;
 
@@ -124,20 +128,35 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Thorn")
+        if (collision.CompareTag("Thorn"))
         {
-            speed /= 2;
-            TakeDamage(thornDamage);
+            speed = baseSpeed / 2;
+
+            if (thornRoutine == null)
+                thornRoutine = StartCoroutine(ThornDamageRoutine());
+        }
+        if(collision.CompareTag("Mask"))
+        {
+            Destroy(collision.gameObject);
+            maskManager.gotMask = true;
+            //NotificationManager.Instance.Show("Press E to wear the mask");
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
-{
-    if (collision.CompareTag("Thorn"))
     {
-        speed = baseSpeed;
+        if (collision.CompareTag("Thorn"))
+        {
+            speed = baseSpeed;
+
+            if (thornRoutine != null)
+            {
+                StopCoroutine(thornRoutine);
+                thornRoutine = null;
+            }
+        }
     }
-}
 
     void CheckGround()
     {
@@ -293,4 +312,15 @@ public class PlayerController : MonoBehaviour
         isInEvent = false;
     }
 
+    IEnumerator ThornDamageRoutine()
+    {
+        while (true)
+        {
+            TakeDamage(thornDamage);
+
+            audioManager.PlayOneShot(hurtClip);
+
+            yield return new WaitForSeconds(thornDamageInterval);
+        }
+    }
 }

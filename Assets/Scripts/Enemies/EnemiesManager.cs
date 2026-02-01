@@ -60,13 +60,12 @@ public class EnemiesManager : MonoBehaviour
         totalEnemies = enemiesLayer.transform.childCount;
         for(int i = 0; i < enemiesLayer.transform.childCount; i++)
         {
-            
             GameObject enemy = enemiesLayer.transform.GetChild(i).gameObject;
             if(enemy.GetComponent<Enemy>() != null)
                 enemiesData.Add(enemy.transform.position,enemy.GetComponent<Enemy>().GetEnemyType());
             else
                 enemiesData.Add(enemy.transform.position,EnemyType.Rushing);
-            
+            print("Enemigo guardado");
         }
     }
 
@@ -75,9 +74,8 @@ public class EnemiesManager : MonoBehaviour
         yield return new WaitForSeconds(2f); // espera X segundos durante la animaci�n
         for(int i = 0; i < totalEnemies ; i++)
         {
-            if(enemiesLayer.transform.GetChild(i).gameObject != null){
-                Destroy(enemiesLayer.transform.GetChild(i).gameObject);
-            }
+            Destroy(enemiesLayer.transform.GetChild(i).gameObject);
+            print("Enemigo destruido");
         }
     }
 

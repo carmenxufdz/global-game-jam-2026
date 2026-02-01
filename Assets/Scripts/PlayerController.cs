@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(Invulnerability());
+        //StartCoroutine(Invulnerability());
 
     }
 
@@ -256,6 +256,4 @@ public class PlayerController : MonoBehaviour
 
         sanityCoroutine = null;
     }
-
-    public float GetHealth() => currentSanity;
 }

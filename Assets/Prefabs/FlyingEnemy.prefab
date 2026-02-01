@@ -103,12 +103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   gameManager: {fileID: 0}
-<<<<<<< Updated upstream
   audioManager: {fileID: 0}
   deathClip: {fileID: 8300000, guid: 39f7a1542bf1b87439a8da7e8ea133aa, type: 3}
   attackClip: {fileID: 8300000, guid: 5fe92ba3be9760e4ebe54b57efac6498, type: 3}
-=======
->>>>>>> Stashed changes
 --- !u!50 &5170393875368198264
 Rigidbody2D:
   serializedVersion: 4
@@ -168,8 +165,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017228782, y: 0.060300797}
-  m_Size: {x: 0.6554241, y: 0.8793984}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!61 &7230630236078630373
 BoxCollider2D:
@@ -203,18 +200,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.24760486, y: 0.028638959}
+  m_Offset: {x: -0.4486075, y: -0.023047447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.171875}
+    oldSize: {x: 1.28, y: 1.5}
     newSize: {x: 1.28, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33370277, y: 0.7331691}
+  m_Size: {x: 0.40261805, y: 0.8365419}
   m_EdgeRadius: 0
 --- !u!95 &2709247597953260998
 Animator:

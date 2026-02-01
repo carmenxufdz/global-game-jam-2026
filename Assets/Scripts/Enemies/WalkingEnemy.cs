@@ -40,7 +40,7 @@ public class WalkingEnemy : Enemy
 
     protected override void AnimationManager()
     {
-        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask || player.GetComponent<PlayerController>().GetHealth() <50);
+        animator.SetBool("mask", gameManager.GetComponent<MaskManager>().mask);
     }
 
 }

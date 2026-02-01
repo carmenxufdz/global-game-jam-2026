@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private int baseJumpForce = 12;
     bool isDead;
     bool onGround;
+    bool canAttack = true;
+
+    [SerializeField] private float attackCooldown = 1.0f;
     [SerializeField] GameObject uiManager;
 
     [SerializeField] private Transform groundCheck;
@@ -172,26 +175,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        if (groundCheck == null) return;
-
-        // Lanzamos un raycast visual para mostrar hasta dónde llega
-        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-
-        Vector3 start = groundCheck.position;
-        Vector3 end = hit.collider != null ? (Vector3)hit.point : groundCheck.position + Vector3.down * groundCheckDistance;
-
-        // Color según si impacta o no
-        Gizmos.color = hit.collider != null ? Color.green : Color.red;
-
-        // Línea del raycast
-        Gizmos.DrawLine(start, end);
-
-        // Pequeño punto en el final del raycast
-        Gizmos.DrawSphere(end, 0.05f);
-    }
-
     void Reset()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -200,10 +183,18 @@ public class PlayerController : MonoBehaviour
     void AttackControll()
     {
         //el jugador ataca cuando pulsa el click izquierdo del raton
-        if(Input.GetMouseButtonDown(0) && !isAttacking && uiManager.GetComponent<UIManager>().GetUIType() == UIType.Gameplay)
+        if(Input.GetMouseButtonDown(0) && !isAttacking && uiManager.GetComponent<UIManager>().GetUIType() == UIType.Gameplay && canAttack)
         {
             StartCoroutine(PlayerAttack());
+            StartCoroutine(AttackCooldown());
         }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 
     IEnumerator PlayerAttack()

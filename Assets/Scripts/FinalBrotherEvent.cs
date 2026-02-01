@@ -54,6 +54,6 @@ public class FinalBrotherEvent : MonoBehaviour
         brother.SetActive(true);
 
         yield return new WaitForSeconds(quittingTime);
-        SceneManager.LoadSceneAsync("MainMenu");
+        SceneManager.LoadSceneAsync("GameFinishScene");
     }
 }

@@ -26353,6 +26353,10 @@ PrefabInstance:
       propertyPath: duration
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6275750703011951689, guid: abae7ccb488d3514a90b6876280bf404, type: 3}
+      propertyPath: roarClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a63e3f3ad8e11d4ca14947369d7056e, type: 3}
     - target: {fileID: 7975420595390923916, guid: abae7ccb488d3514a90b6876280bf404, type: 3}
       propertyPath: m_LocalPosition.x
       value: 225.48

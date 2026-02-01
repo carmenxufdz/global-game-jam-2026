@@ -12,7 +12,7 @@ public class FlyingEnemy : Enemy
         rb.gravityScale = 0;
         type = EnemyType.Flying;
         health = 20;
-        speed = 300;
+        speed = 250;
         damage = 10;
         playerHealed = 5;
         animator = GetComponent<Animator>();

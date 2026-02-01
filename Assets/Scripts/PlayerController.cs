@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             maskManager.gotMask = true;
-            //NotificationManager.Instance.Show("Press E to wear the mask");
+            NotificationManager.Instance.Show("Press E to wear the mask");
         }
     }
 

@@ -22959,7 +22959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOLA
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -25308,6 +25308,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1716531116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3372785114797437116, guid: ae0839c908f77484bb61521fe7b2db77, type: 3}
+  m_PrefabInstance: {fileID: 405413060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1768605549
 GameObject:
   m_ObjectHideFlags: 0
@@ -27731,6 +27736,7 @@ MonoBehaviour:
   lightSlider: {fileID: 1265316819}
   shadowSlider: {fileID: 160267926}
   player: {fileID: 1093536962}
+  enemiesManager: {fileID: 1716531116}
   gotMask: 0
   mask: 0
   canAct: 1

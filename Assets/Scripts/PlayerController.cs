@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
             //usando el rigidbody, le damos velocidad en  un vector2 usando el valor que nos devuelve el eje horizontal---
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
 
+            CheckGround();
+
             if (Input.GetKeyDown(KeyCode.Space) && onGround)
             {
                 audioManager.PlayOneShot(jumpClip);
